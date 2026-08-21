@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSRTIME – Professional Timecode & Synchronization</title>
+    <meta name="description" content="OSRTIME – A next-generation timecode and synchronization platform for film, broadcast and studio professionals.">
+    <meta name="theme-color" content="#111214">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════════════
+           OSRTIME – PROFESSIONAL STUDIO DESIGN
+           ═══════════════════════════════════════════════════════ */
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* ── Page Design System ── */
+            --page-bg: #0C0D0F;
+            --surface-1: #141517;
+            --surface-2: #1A1C1F;
+            --surface-3: #222428;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-medium: rgba(255, 255, 255, 0.10);
+            --text-primary: #E8EAED;
+            --text-secondary: #9AA0A6;
+            --text-muted: #5F6368;
+            --accent-cool: #80CBC4;
+            --accent-blue: #81D4FA;
+
+            /* ── Master Clock Panel Colors (unchanged) ── */
+            --neon-green: #39FF14;
+            --neon-green-dim: rgba(57, 255, 20, 0.04);
+            --neon-green-subtle: rgba(57, 255, 20, 0.02);
+            --label-gray: #777777;
+            --date-color: rgba(255, 255, 255, 0.7);
+            --divider-green: #1B3F1B;
+            --master-label: #81C784;
+            --glass-top: #2E1010;
+            --glass-mid: #140808;
+            --glass-bottom: #0F0505;
+            --rim-color: rgba(139, 69, 19, 0.4);
+            --btn-bg: #140D0D;
+            --nav-bg: #0F1113;
+            --nav-selected: #69F0AE;
+            --nav-unselected: #9E9E9E;
+            --accent-red: #FF5252;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--page-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── MAIN LAYOUT ── */
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 48px 24px 40px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* ── LOGO ── */
+        .logo-container {
+            margin-bottom: 20px;
+            animation: fadeIn 0.8s ease-out 0.1s both;
+        }
+        .logo-container img {
+            max-width: 180px;
+            height: auto;
+            opacity: 0.92;
+            transition: opacity 0.3s ease;
+        }
+        .logo-container img:hover {
+            opacity: 1;
+        }
+
+        /* ── STATUS BADGE ── */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface-2);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            padding: 7px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--accent-cool);
+            margin-bottom: 36px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        .status-dot {
+            width: 6px; height: 6px;
+            background: var(--accent-cool);
+            border-radius: 50%;
+            animation: statusPulse 3s ease-in-out infinite;
+        }
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.35; }
+        }
+
+        /* ═══════════════════════════════════════════
+           MASTER CLOCK PANEL (Unchanged – App Design)
+           ═══════════════════════════════════════════ */
+        .clock-panel {
+            position: relative;
+            width: 100%;
+            max-width: 540px;
+            background: linear-gradient(135deg, var(--glass-top) 0%, var(--glass-mid) 50%, var(--glass-bottom) 100%);
+            border: 5px solid var(--rim-color);
+            border-radius: 10px;
+            padding: 0;
+            margin-bottom: 0;
+            overflow: hidden;
+            animation: fadeSlideUp 0.9s ease-out 0.3s both;
+            box-shadow:
+                0 8px 18px rgba(0, 0, 0, 0.9),
+                0 0 28px var(--neon-green-subtle);
+        }
+
+        /* ── Glass Reflection Overlay ── */
+        .clock-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 6px;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.02) 40%,
+                transparent 60%,
+                rgba(0, 0, 0, 0.12) 100%
+            );
+            z-index: 3;
+            pointer-events: none;
+        }
+        .clock-panel::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 6px;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.04) 28%,
+                transparent 29%
+            );
+            z-index: 4;
+            pointer-events: none;
+        }
+
+        /* ── Clock Inner Content ── */
+        .clock-inner {
+            position: relative;
+            z-index: 2;
+            padding: 20px 16px;
+        }
+
+        /* ── Row 1: Labels H M S F ── */
+        .clock-labels {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: 6px;
+        }
+        .clock-labels span {
+            flex: 1;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--label-gray);
+        }
+
+        /* ── Seven Segment Canvas ── */
+        #master-clock-canvas {
+            aspect-ratio: 6 / 1;
+            display: block;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        /* ── Date Line ── */
+        .clock-date {
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--date-color);
+            letter-spacing: 2px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* ── Divider ── */
+        .clock-divider {
+            height: 1px;
+            background: var(--divider-green);
+            margin: 0 0 12px 0;
+        }
+
+        /* ── Clock Footer (MASTER + Buttons) ── */
+        .clock-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .clock-footer-left { flex: 1; }
+
+        .master-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--master-label);
+            margin-bottom: 4px;
+        }
+
+        /* ── Source Selector Badges ── */
+        .source-selectors { display: flex; gap: 2px; }
+        .source-btn {
+            flex: 1;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            border: 1px solid var(--nav-selected);
+            border-radius: 3px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--nav-selected);
+            cursor: default;
+        }
+        .source-btn.active {
+            background: var(--nav-selected);
+            color: #000;
+        }
+
+        /* ── Action Buttons ── */
+        .clock-actions { display: flex; gap: 8px; align-items: flex-end; }
+        .action-btn {
+            height: 24px; width: 36px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--btn-bg);
+            border: 1px solid var(--neon-green);
+            border-radius: 3px;
+            cursor: default;
+        }
+        .action-btn svg {
+            width: 14px; height: 14px;
+            stroke: var(--neon-green); fill: none; stroke-width: 2;
+        }
+        .action-btn.rec-btn {
+            width: 48px;
+            border-color: #f44336;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px; font-weight: 700;
+            color: #f44336; letter-spacing: 1px;
+        }
+
+        /* ── NAVIGATION BAR ── */
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            max-width: 540px;
+            background: var(--nav-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 0 0 10px 10px;
+            padding: 8px 0 6px;
+            margin-bottom: 0;
+            animation: fadeSlideUp 0.9s ease-out 0.4s both;
+        }
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            padding: 4px 8px;
+            cursor: default;
+        }
+        .nav-item .nav-icon svg {
+            width: 20px; height: 20px;
+            stroke: var(--nav-unselected); fill: none; stroke-width: 2;
+        }
+        .nav-item .nav-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px; font-weight: 500;
+            color: var(--nav-unselected);
+        }
+        .nav-item.active .nav-icon svg { stroke: var(--nav-selected); }
+        .nav-item.active .nav-label {
+            color: var(--nav-selected); font-weight: 700;
+        }
+
+        /* ═══════════════════════════════════════════
+           PAGE CONTENT – PROFESSIONAL STUDIO DESIGN
+           ═══════════════════════════════════════════ */
+
+        /* ── Master Clock Title ── */
+        .master-clock-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 56px;
+            animation: fadeIn 0.8s ease-out 0.5s both;
+        }
+
+        /* ── Divider Line ── */
+        .section-divider {
+            width: 48px;
+            height: 1px;
+            background: var(--border-medium);
+            margin: 0 auto 48px;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+
+        /* ── HEADLINE SECTION ── */
+        .headline-section {
+            text-align: center;
+            margin-bottom: 16px;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+        .headline-main {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(26px, 4.5vw, 42px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        .headline-main em {
+            font-style: normal;
+            color: var(--accent-cool);
+        }
+        .headline-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(14px, 2vw, 17px);
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ── BRAND TAGLINE ── */
+        .brand-tagline {
+            text-align: center;
+            margin-bottom: 56px;
+            animation: fadeIn 0.8s ease-out 0.7s both;
+        }
+        .brand-tagline-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .brand-tagline-text span {
+            color: var(--accent-cool);
+        }
+
+        /* ── FEATURES GRID ── */
+        .features-section {
+            width: 100%;
+            max-width: 860px;
+            margin-bottom: 64px;
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }
+        .features-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border-subtle);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .feature-card {
+            background: var(--surface-1);
+            padding: 28px 20px 24px;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+        .feature-card:hover {
+            background: var(--surface-2);
+        }
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 14px;
+            opacity: 0.85;
+        }
+        .feature-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .feature-desc {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4px;
+        }
+        .feature-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            background: var(--surface-3);
+            color: var(--text-secondary);
+        }
+
+        /* ── PLAY STORE CTA ── */
+        .cta-section {
+            text-align: center;
+            margin-bottom: 56px;
+            animation: fadeIn 0.8s ease-out 0.95s both;
+        }
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--surface-2);
+            border: 1px solid var(--border-medium);
+            border-radius: 10px;
+            padding: 14px 28px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .cta-badge:hover {
+            background: var(--surface-3);
+            border-color: var(--accent-cool);
+        }
+        .cta-badge-icon {
+            width: 28px;
+            height: 28px;
+        }
+        .cta-badge-text {
+            text-align: left;
+        }
+        .cta-badge-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            line-height: 1;
+            margin-bottom: 3px;
+        }
+        .cta-badge-store {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        /* ── SPECS ROW ── */
+        .specs-section {
+            width: 100%;
+            max-width: 860px;
+            margin-bottom: 64px;
+            animation: fadeIn 0.8s ease-out 0.9s both;
+        }
+        .specs-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 0;
+            background: var(--surface-1);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 24px 0;
+        }
+        .spec-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        .spec-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background: var(--border-subtle);
+        }
+        .spec-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .spec-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* ── CONTACT ── */
+        .contact-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+        .contact-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .contact-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--accent-cool);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color 0.25s ease;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 2px;
+        }
+        .contact-link:hover {
+            color: var(--accent-blue);
+            border-bottom-color: var(--accent-blue);
+        }
+
+        /* ── FOOTER ── */
+        .copyright {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            animation: fadeIn 0.8s ease-out 1.1s both;
+        }
+        .footer-sep {
+            margin: 0 8px;
+            opacity: 0.3;
+        }
+        .impressum-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+        .impressum-link:hover {
+            color: var(--text-secondary);
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .specs-row { flex-wrap: wrap; padding: 16px 0; }
+            .spec-item { min-width: 33%; padding: 8px 0; }
+            .spec-item::after { display: none; }
+            .spec-value { font-size: 16px; }
+        }
+        @media (max-width: 600px) {
+            .page-wrapper { padding: 32px 16px 32px; }
+            .clock-labels span { font-size: 12px; }
+            .source-btn { font-size: 8px; height: 22px; }
+            .clock-actions { gap: 4px; }
+            .action-btn { width: 32px; height: 22px; }
+            .action-btn.rec-btn { width: 42px; }
+            .nav-item .nav-label { font-size: 9px; }
+        }
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .clock-inner { padding: 12px 10px; }
+            .specs-row { gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/osertimeDotcom.png" alt="OSRTIME Logo" id="logo">
+        </div>
+
+        <!-- Status Badge -->
+        <div class="status-badge" id="status-badge">
+            <div class="status-dot"></div>
+            IN DEVELOPMENT
+        </div>
+
+        <!-- ═══ MASTER CLOCK PANEL ═══ -->
+        <div class="clock-panel" id="clock-panel">
+            <div class="clock-inner">
+                <div class="clock-labels">
+                    <span>H</span>
+                    <span>M</span>
+                    <span>S</span>
+                    <span id="fps-label">23.976</span>
+                </div>
+                <canvas id="master-clock-canvas" width="520" height="100"></canvas>
+                <div class="clock-date" id="clock-date"></div>
+                <div class="clock-divider"></div>
+                <div class="clock-footer">
+                    <div class="clock-footer-left">
+                        <div class="master-label">MASTER</div>
+                        <div class="source-selectors">
+                            <div class="source-btn active" id="src-tod">TOD</div>
+                            <div class="source-btn" id="src-cust">CUST</div>
+                            <div class="source-btn" id="src-jam">JAM</div>
+                            <div class="source-btn" id="src-slv">SLV</div>
+                        </div>
+                    </div>
+                    <div class="clock-actions">
+                        <div class="action-btn" id="btn-fullscreen">
+                            <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+                        </div>
+                        <div class="action-btn" id="btn-mute">
+                            <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                        </div>
+                        <div class="action-btn rec-btn" id="btn-rec">REC</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <div class="nav-bar" id="nav-bar">
+            <div class="nav-item active">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+                <span class="nav-label">Master</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
+                <span class="nav-label">Control</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+                <span class="nav-label">Routing</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>
+                <span class="nav-label">Record</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                <span class="nav-label">Network</span>
+            </div>
+            <div class="nav-item">
+                <span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+                <span class="nav-label">Settings</span>
+            </div>
+        </div>
+
+        <!-- Master Clock Title -->
+        <div class="master-clock-title">Master Clock</div>
+
+        <!-- Section Divider -->
+        <div class="section-divider"></div>
+
+        <!-- Headline -->
+        <div class="headline-section">
+            <h1 class="headline-main">
+                Professional Timecode.<br><em>Frame-Accurate Sync.</em>
+            </h1>
+            <p class="headline-sub">
+                A next-generation timecode platform built for film, broadcast and studio production. Precision-engineered for professionals who demand absolute reliability.
+            </p>
+        </div>
+
+        <!-- Brand Tagline -->
+        <div class="brand-tagline">
+            <div class="brand-tagline-text">
+                <span>OSRTIME</span> &mdash; Coming Soon
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="features-section">
+            <div class="features-label">Core Capabilities</div>
+            <div class="features-grid" id="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⏱</div>
+                    <div class="feature-title">Timecode Engine</div>
+                    <div class="feature-desc">Full SMPTE timecode support with Drop-Frame &amp; Non-Drop-Frame across all standard and high frame rates</div>
+                    <div class="feature-tags">
+                        <span class="feature-tag">23.976</span>
+                        <span class="feature-tag">24</span>
+                        <span class="feature-tag">25</span>
+                        <span class="feature-tag">29.97</span>
+                        <span class="feature-tag">30</span>
+                        <span class="feature-tag">60</span>
+                        <span class="feature-tag">120 FPS</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <div class="feature-title">Wi-Fi Sync</div>
+                    <div class="feature-desc">Wireless multi-device synchronization over any local network for distributed production setups</div>
+                    <div class="feature-tags">
+                        <span class="feature-tag">Wi-Fi</span>
+                        <span class="feature-tag">Multi-Device</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎚</div>
+                    <div class="feature-title">Pro Audio</div>
+                    <div class="feature-desc">USB audio interface support with professional metering and configurable bit depth for studio-grade monitoring</div>
+                    <div class="feature-tags">
+                        <span class="feature-tag">USB Audio</span>
+                        <span class="feature-tag">dBFS</span>
+                        <span class="feature-tag">LUFS</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔊</div>
+                    <div class="feature-title">LTC Output</div>
+                    <div class="feature-desc">Linear Timecode output via 3.5mm jack for direct hardware integration with recorders and mixers</div>
+                    <div class="feature-tags">
+                        <span class="feature-tag">3.5mm Jack</span>
+                        <span class="feature-tag">LTC</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <div class="feature-title">Pro Recording</div>
+                    <div class="feature-desc">Industry-standard timecode recording with BWF metadata for seamless post-production workflows</div>
+                    <div class="feature-tags">
+                        <span class="feature-tag">BWF</span>
+                        <span class="feature-tag">Metadata</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <div class="feature-title">SocialHub</div>
+                    <div class="feature-desc">Connect and collaborate with the professional creative community in a dedicated production network</div>
+                    <div class="feature-tags">
+                        <span class="feature-tag">Community</span>
+                        <span class="feature-tag">Collaborate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specs Row -->
+        <div class="specs-section">
+            <div class="specs-row">
+                <div class="spec-item">
+                    <div class="spec-value">120</div>
+                    <div class="spec-label">Max FPS</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-value">DF/NDF</div>
+                    <div class="spec-label">SMPTE Modes</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-value">LTC</div>
+                    <div class="spec-label">3.5mm Output</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-value">Wi-Fi</div>
+                    <div class="spec-label">Sync Protocol</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-value">LUFS</div>
+                    <div class="spec-label">Audio Metering</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-value">BWF</div>
+                    <div class="spec-label">Export Format</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Google Play Store CTA -->
+        <div class="cta-section">
+            <div class="cta-badge">
+                <svg class="cta-badge-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/>
+                    <path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/>
+                    <path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/>
+                    <path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/>
+                </svg>
+                <div class="cta-badge-text">
+                    <div class="cta-badge-label">Coming Soon on</div>
+                    <div class="cta-badge-store">Google Play</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact-section">
+            <div class="contact-label">Get In Touch</div>
+            <a href="mailto:support@osrtime.com" class="contact-link" id="contact-link">support@osrtime.com</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="copyright">
+            © 2026 OSRTIME<span class="footer-sep">·</span>All Rights Reserved<span class="footer-sep">·</span><a href="https://mein.online-impressum.de/hardwarestream/" target="_blank" rel="noopener noreferrer" class="impressum-link" id="impressum-link">Impressum</a>
+        </div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         JAVASCRIPT ENGINE
+         ═══════════════════════════════════════════ -->
+    <script>
+    (function() {
+        'use strict';
+
+        /* ════════════════════════════════════════════════════
+           SEVEN-SEGMENT DISPLAY RENDERER
+           ════════════════════════════════════════════════════ */
+        const clockCanvas = document.getElementById('master-clock-canvas');
+        const ctx = clockCanvas.getContext('2d');
+
+        const ACTIVE_COLOR = '#39FF14';
+        const INACTIVE_COLOR = 'rgba(57, 255, 20, 0.04)';
+
+        const SEGMENTS = {
+            '0': [1,1,1,1,1,1,0],
+            '1': [0,1,1,0,0,0,0],
+            '2': [1,1,0,1,1,0,1],
+            '3': [1,1,1,1,0,0,1],
+            '4': [0,1,1,0,0,1,1],
+            '5': [1,0,1,1,0,1,1],
+            '6': [1,0,1,1,1,1,1],
+            '7': [1,1,1,0,0,0,0],
+            '8': [1,1,1,1,1,1,1],
+            '9': [1,1,1,1,0,1,1],
+            '-': [0,0,0,0,0,0,1],
+        };
+
+        // Display metrics
+        function getMetrics(height) {
+            return {
+                digitWidth: height * 0.52,
+                digitSpacing: height * 0.10,
+                colonWidth: height * 0.25,
+                thickness: height * 0.1,
+                slant: height * 0.06,
+            };
+        }
+
+        function requiredWidth(text, height) {
+            const m = getMetrics(height);
+            let w = 0;
+            for (let i = 0; i < text.length; i++) {
+                if (text[i] === ':' || text[i] === ';') {
+                    w += m.colonWidth + m.digitSpacing;
+                } else {
+                    w += m.digitWidth + m.digitSpacing;
+                }
+            }
+            return w > 0 ? w - m.digitSpacing + m.slant : 0;
+        }
+
+        function slantOffset(y, height, slant) {
+            return slant * (1 - (y / height));
+        }
+
+        function drawSegmentPolygon(points, active, x, height, slant) {
+            ctx.fillStyle = active ? ACTIVE_COLOR : INACTIVE_COLOR;
+            ctx.beginPath();
+            const p0 = points[0];
+            ctx.moveTo(x + p0[0] + slantOffset(p0[1], height, slant), p0[1]);
+            for (let i = 1; i < points.length; i++) {
+                const p = points[i];
+                ctx.lineTo(x + p[0] + slantOffset(p[1], height, slant), p[1]);
+            }
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function drawDigit(x, h, m, segments) {
+            const w = m.digitWidth;
+            const t = m.thickness;
+            const gap = t * 0.2;
+            const sl = m.slant;
+
+            drawSegmentPolygon([
+                [gap, 0], [w - gap, 0], [w - t - gap, t], [t + gap, t]
+            ], segments[0], x, h, sl);
+
+            drawSegmentPolygon([
+                [w, gap], [w, h/2 - gap/2], [w - t, h/2 - gap/2 - t/2], [w - t, t + gap]
+            ], segments[1], x, h, sl);
+
+            drawSegmentPolygon([
+                [w, h/2 + gap/2], [w, h - gap], [w - t, h - t - gap], [w - t, h/2 + gap/2 + t/2]
+            ], segments[2], x, h, sl);
+
+            drawSegmentPolygon([
+                [gap, h], [w - gap, h], [w - t - gap, h - t], [t + gap, h - t]
+            ], segments[3], x, h, sl);
+
+            drawSegmentPolygon([
+                [0, h/2 + gap/2], [0, h - gap], [t, h - t - gap], [t, h/2 + gap/2 + t/2]
+            ], segments[4], x, h, sl);
+
+            drawSegmentPolygon([
+                [0, gap], [0, h/2 - gap/2], [t, h/2 - gap/2 - t/2], [t, t + gap]
+            ], segments[5], x, h, sl);
+
+            drawSegmentPolygon([
+                [gap, h/2],
+                [t + gap, h/2 - t/2],
+                [w - t - gap, h/2 - t/2],
+                [w - gap, h/2],
+                [w - t - gap, h/2 + t/2],
+                [t + gap, h/2 + t/2]
+            ], segments[6], x, h, sl);
+        }
+
+        function drawColon(x, h, m) {
+            const dotSize = m.thickness;
+            const centerX = x + m.colonWidth / 2;
+            const sl = m.slant;
+
+            ctx.fillStyle = ACTIVE_COLOR;
+
+            const topY = h * 0.35;
+            const topSl = slantOffset(topY, h, sl);
+            ctx.fillRect(
+                centerX - dotSize/2 + topSl,
+                topY - dotSize/2,
+                dotSize,
+                dotSize
+            );
+
+            const botY = h * 0.65;
+            const botSl = slantOffset(botY, h, sl);
+            ctx.fillRect(
+                centerX - dotSize/2 - h * 0.05 + botSl,
+                botY - dotSize/2,
+                dotSize,
+                dotSize
+            );
+        }
+
+        function scaleCanvas() {
+            const rect = clockCanvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            clockCanvas.width = rect.width * dpr;
+            clockCanvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+            return rect;
+        }
+
+        function renderClock() {
+            const rect = scaleCanvas();
+            const displayW = rect.width;
+            const displayH = rect.height;
+
+            ctx.clearRect(0, 0, displayW, displayH);
+
+            const now = new Date();
+            const hh = String(now.getHours()).padStart(2, '0');
+            const mm = String(now.getMinutes()).padStart(2, '0');
+            const ss = String(now.getSeconds()).padStart(2, '0');
+            const totalFrames = Math.floor((now.getTime() % 1000) / (1000 / 23.976));
+            const ff = String(Math.min(totalFrames, 23)).padStart(2, '0');
+
+            const tcText = `${hh}:${mm}:${ss}:${ff}`;
+
+            const digitHeight = displayH * 0.85;
+            const m = getMetrics(digitHeight);
+            const totalW = requiredWidth(tcText, digitHeight);
+            const yOffset = (displayH - digitHeight) / 2;
+
+            let cx = (displayW - totalW) / 2;
+            if (cx < 0) cx = 0;
+
+            ctx.save();
+            ctx.translate(0, yOffset);
+
+            for (let i = 0; i < tcText.length; i++) {
+                const char = tcText[i];
+                if (char === ':') {
+                    drawColon(cx, digitHeight, m);
+                    cx += m.colonWidth + m.digitSpacing;
+                } else {
+                    const segs = SEGMENTS[char] || SEGMENTS['0'];
+                    drawDigit(cx, digitHeight, m, segs);
+                    cx += m.digitWidth + m.digitSpacing;
+                }
+            }
+
+            ctx.restore();
+            requestAnimationFrame(renderClock);
+        }
+        renderClock();
+
+        /* ════════════════════════════════════
+           DATE DISPLAY
+           ════════════════════════════════════ */
+        const dateEl = document.getElementById('clock-date');
+        const dayNames = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+
+        function updateDate() {
+            const now = new Date();
+            const dayIdx = now.getDay();
+            const adjustedIdx = dayIdx === 0 ? 6 : dayIdx - 1;
+            const day = dayNames[adjustedIdx];
+            const dd = String(now.getDate()).padStart(2, '0');
+            const mo = String(now.getMonth() + 1).padStart(2, '0');
+            const yyyy = now.getFullYear();
+            dateEl.textContent = `${day} · ${dd}.${mo}.${yyyy}`;
+        }
+        updateDate();
+        setInterval(updateDate, 1000);
+
+        /* ════════════════════════════════════
+           WINDOW RESIZE HANDLER
+           ════════════════════════════════════ */
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                scaleCanvas();
+            }, 100);
+        });
+
+    })();
+    </script>
+</body>
+</html>
