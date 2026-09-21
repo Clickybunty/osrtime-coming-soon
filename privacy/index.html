@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy / Datenschutzerklärung – OSRTIME</title>
+    <meta name="description" content="Privacy Policy for OSRTIME Sync-Box TCR">
+    <meta name="theme-color" content="#111214">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════════════
+           OSRTIME – PROFESSIONAL STUDIO DESIGN
+           ═══════════════════════════════════════════════════════ */
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* ── Page Design System ── */
+            --page-bg: #0C0D0F;
+            --surface-1: #141517;
+            --surface-2: #1A1C1F;
+            --surface-3: #222428;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-medium: rgba(255, 255, 255, 0.10);
+            --text-primary: #E8EAED;
+            --text-secondary: #9AA0A6;
+            --text-muted: #5F6368;
+            --accent-cool: #80CBC4;
+            --accent-blue: #81D4FA;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--page-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── MAIN LAYOUT ── */
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 48px 24px 40px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* ── LOGO ── */
+        .logo-container {
+            margin-bottom: 20px;
+            animation: fadeIn 0.8s ease-out 0.1s both;
+        }
+        .logo-container img {
+            max-width: 180px;
+            height: auto;
+            opacity: 0.92;
+            transition: opacity 0.3s ease;
+        }
+        .logo-container img:hover {
+            opacity: 1;
+        }
+
+        /* ── HEADLINE SECTION ── */
+        .headline-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        .headline-main {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(26px, 4.5vw, 42px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        .headline-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(14px, 2vw, 17px);
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ── CONTENT SECTION ── */
+        .content-section {
+            width: 100%;
+            max-width: 760px;
+            background: var(--surface-1);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 40px 48px;
+            margin-bottom: 64px;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .content-section h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .content-section h2:first-child {
+            margin-top: 0;
+        }
+
+        .content-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent-cool);
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        .content-section p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .content-section ul {
+            margin-bottom: 24px;
+            padding-left: 20px;
+        }
+
+        .content-section li {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .content-section a {
+            color: var(--accent-cool);
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+        .content-section a:hover {
+            color: var(--accent-blue);
+        }
+
+        .last-updated {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .lang-divider {
+            height: 1px;
+            background: var(--border-medium);
+            margin: 56px 0;
+        }
+
+        /* ── FOOTER ── */
+        .copyright {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+            text-align: center;
+        }
+        .footer-sep {
+            margin: 0 8px;
+            opacity: 0.3;
+        }
+        .impressum-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+        .impressum-link:hover {
+            color: var(--text-secondary);
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 32px 24px;
+            }
+        }
+        @media (max-width: 600px) {
+            .page-wrapper { padding: 32px 16px 32px; }
+            .content-section h2 { font-size: 20px; }
+            .content-section h3 { font-size: 15px; }
+            .content-section p, .content-section li { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+
+        <!-- Logo -->
+        <a href="/" class="logo-container">
+            <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/osertimeDotcom.png" alt="OSRTIME Logo">
+        </a>
+
+        <!-- Headline -->
+        <div class="headline-section">
+            <h1 class="headline-main">
+                Privacy Policy
+            </h1>
+            <p class="headline-sub">
+                Datenschutzerklärung
+            </p>
+        </div>
+
+        <!-- Content Box -->
+        <div class="content-section">
+            
+            <!-- ENGLISH SECTION -->
+            <h2>Privacy Policy</h2>
+            <div class="last-updated">Last updated: 21 September 2026</div>
+
+            <p><strong>Product:</strong> OSRTIME Sync-Box TCR</p>
+
+            <h3>Data Collection</h3>
+            <ul>
+                <li>The app does not collect, transmit, sell, or share personal data with OSRTIME or third parties.</li>
+            </ul>
+
+            <h3>Local Audio Processing</h3>
+            <ul>
+                <li>User-created audio recordings are processed and stored locally on the user's device.</li>
+                <li>Audio recordings are not uploaded to OSRTIME or any third-party service.</li>
+            </ul>
+
+            <h3>Local Network and Bluetooth Communication</h3>
+            <ul>
+                <li>The app uses local UDP networking for B2 timecode/device synchronization.</li>
+                <li>The app uses Bluetooth Low Energy for local device discovery/synchronization.</li>
+                <li>These communications are local peer-to-peer / LAN communications.</li>
+            </ul>
+
+            <h3>Permissions</h3>
+            <ul>
+                <li>Microphone access is used for LTC/timecode input and local audio recording.</li>
+                <li>Location permissions may be requested where Android requires them for Bluetooth scanning.</li>
+                <li>The app does not access, store, or transmit GPS location data.</li>
+            </ul>
+
+            <h3>Analytics, Advertising and Tracking</h3>
+            <ul>
+                <li>The app does not use analytics SDKs.</li>
+                <li>The app does not use advertising SDKs.</li>
+                <li>The app does not use crash-reporting services.</li>
+                <li>The app does not use third-party telemetry or tracking services.</li>
+                <li>Local diagnostic/telemetry data, where present, remains local to the device and is not uploaded.</li>
+            </ul>
+
+            <h3>Contact</h3>
+            <p>
+                OSRTIME<br>
+                <a href="https://osrtime.com">https://osrtime.com</a><br>
+                <a href="mailto:support@osrtime.com">support@osrtime.com</a>
+            </p>
+
+            <div class="lang-divider"></div>
+
+            <!-- GERMAN SECTION -->
+            <h2>Datenschutzerklärung</h2>
+            <div class="last-updated">Letzte Aktualisierung: 21. September 2026</div>
+
+            <p><strong>Produkt:</strong> OSRTIME Sync-Box TCR</p>
+
+            <h3>Datenerhebung</h3>
+            <ul>
+                <li>Die App erhebt, überträgt, verkauft oder teilt keine personenbezogenen Daten mit OSRTIME oder Dritten.</li>
+            </ul>
+
+            <h3>Lokale Audioverarbeitung</h3>
+            <ul>
+                <li>Vom Nutzer erstellte Audioaufnahmen werden lokal auf dem Gerät verarbeitet und gespeichert.</li>
+                <li>Audioaufnahmen werden nicht an OSRTIME oder Drittanbieter hochgeladen.</li>
+            </ul>
+
+            <h3>Lokale Netzwerk- und Bluetooth-Kommunikation</h3>
+            <ul>
+                <li>Die App nutzt lokales UDP-Networking für die B2-Timecode-/Gerätesynchronisation.</li>
+                <li>Die App nutzt Bluetooth Low Energy für die lokale Geräteerkennung/-synchronisation.</li>
+                <li>Bei diesen Verbindungen handelt es sich um lokale Peer-to-Peer- / LAN-Kommunikation.</li>
+            </ul>
+
+            <h3>Berechtigungen</h3>
+            <ul>
+                <li>Der Mikrofonzugriff wird für den LTC-/Timecode-Eingang und lokale Audioaufnahmen verwendet.</li>
+                <li>Standortberechtigungen können angefragt werden, sofern Android dies für Bluetooth-Scans erfordert.</li>
+                <li>Die App greift nicht auf GPS-Standortdaten zu, speichert diese nicht und überträgt sie nicht.</li>
+            </ul>
+
+            <h3>Analyse, Werbung und Tracking</h3>
+            <ul>
+                <li>Die App verwendet keine Analyse-SDKs.</li>
+                <li>Die App verwendet keine Werbe-SDKs.</li>
+                <li>Die App verwendet keine Crash-Reporting-Dienste.</li>
+                <li>Die App verwendet keine Telemetrie- oder Tracking-Dienste von Drittanbietern.</li>
+                <li>Lokale Diagnose-/Telemetriedaten verbleiben, sofern vorhanden, lokal auf dem Gerät und werden nicht hochgeladen.</li>
+            </ul>
+
+            <h3>Kontakt</h3>
+            <p>
+                OSRTIME<br>
+                <a href="https://osrtime.com">https://osrtime.com</a><br>
+                <a href="mailto:support@osrtime.com">support@osrtime.com</a>
+            </p>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="copyright">
+            © 2026 OSRTIME<span class="footer-sep">·</span>All Rights Reserved<span class="footer-sep">·</span><a href="/privacy/" class="impressum-link">Privacy / Datenschutz</a><span class="footer-sep">·</span><a href="https://mein.online-impressum.de/hardwarestream/" target="_blank" rel="noopener noreferrer" class="impressum-link" id="impressum-link">Impressum</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
