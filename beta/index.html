@@ -677,9 +677,9 @@
             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
                 Send us an email from the email address associated with your Google Play account. We will add your account to the beta program and send you the Google Play beta access instructions and, where applicable, a promotional code.
             </p>
-            <a href="mailto:beta@osrtime.com?subject=OSRTIME%20Syncbox%20TCR%20Beta%20Access&body=Please%20confirm%3A%0A-%20Android%20device%20model%3A%20%0A-%20Android%20version%3A%20%0A-%20This%20email%20is%20linked%20to%20my%20Google%20Play%20account%3A%20Yes%2FNo" class="cta-badge" style="display: inline-flex; justify-content: center; width: 100%; text-align: center; border-color: var(--accent-cool);">
+            <button id="btn-open-modal" class="cta-badge" style="display: inline-flex; justify-content: center; width: 100%; text-align: center; border-color: var(--accent-cool); background: transparent; cursor: pointer;">
                 <div class="cta-badge-store" style="color: var(--accent-cool);">Join the Beta</div>
-            </a>
+            </button>
             <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-top: 24px;">
                 <strong>Note:</strong> Beta access is currently managed manually. Access is not automatic. You must use the Google account associated with Google Play. Participation does not require professional film or audio experience.
             </p>
@@ -691,6 +691,10 @@
                     <li style="margin-bottom: 8px;">We add that Google account to the private Google Play beta.</li>
                     <li style="margin-bottom: 8px;">You receive a <strong>Google Play beta opt-in link</strong> and a <strong>promotional code</strong> by email.</li>
                 </ol>
+                <div style="background: var(--surface-2); padding: 16px; border-radius: 6px; border: 1px solid var(--accent-cool); margin-bottom: 24px; border-left: 4px solid var(--accent-cool);">
+                    <strong style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-primary); display: block; margin-bottom: 6px; letter-spacing: 1px;">BETA ACCESS REQUIRED</strong>
+                    <span style="font-size: 13px; color: var(--text-primary);">The beta opt-in link and promotional code are two separate steps. A promotional code alone does not grant access to the private beta.</span>
+                </div>
                 
                 <div style="background: var(--surface-2); padding: 16px; border-radius: 6px; border: 1px solid var(--border-subtle); margin-bottom: 12px;">
                     <div style="font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--accent-cool); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">Step 1: Join the Beta</div>
@@ -708,10 +712,6 @@
                         <li style="margin-bottom: 4px;">Enter the promotional code from your beta email.</li>
                         <li>Open the <strong>OSRTIME Syncbox TCR</strong> Play Store page and install the app.</li>
                     </ul>
-                </div>
-
-                <div style="font-size: 12px; color: var(--text-muted); line-height: 1.5; padding: 12px; background: rgba(255, 255, 255, 0.03); border-radius: 6px; border-left: 3px solid var(--accent-cool);">
-                    <strong style="color: var(--text-secondary);">Important:</strong> The beta opt-in link and the promotional code are two separate steps. Redeeming the promo code alone does not grant access to the private beta.
                 </div>
             </div>
         </div>
@@ -744,9 +744,82 @@
                 </div>
             </div>
         </div>
+        <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; animation: fadeIn 0.8s ease-out 1.05s both;">
+            <a href="/" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">Home</a>
+            <a href="https://www.youtube.com/@OSRTIME-TCR" target="_blank" rel="noopener noreferrer" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">YouTube</a>
+            <a href="/privacy/" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">Privacy</a>
+            <a href="https://mein.online-impressum.de/hardwarestream/" target="_blank" rel="noopener noreferrer" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">Impressum</a>
+        </div>
         <div class="copyright">
             © 2026 OSRTIME<span class="footer-sep">·</span>All Rights Reserved<span class="footer-sep">·</span><a href="/privacy/" class="impressum-link">Privacy / Datenschutz</a><span class="footer-sep">·</span><a href="https://mein.online-impressum.de/hardwarestream/" target="_blank" rel="noopener noreferrer" class="impressum-link" id="impressum-link">Impressum</a>
         </div>
     </div>
+    
+    <!-- Beta Join Modal -->
+    <div id="beta-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px);">
+        <div style="background: var(--surface-1); border: 1px solid var(--border-medium); border-radius: 10px; width: 100%; max-width: 500px; padding: 32px; position: relative; animation: fadeSlideUp 0.3s ease-out forwards; text-align: left;">
+            <button id="btn-close-modal" style="position: absolute; top: 16px; right: 16px; background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 24px; line-height: 1;">&times;</button>
+            <h2 style="font-family: 'Inter', sans-serif; font-size: 18px; color: var(--text-primary); margin-bottom: 16px;">Join the OSRTIME Syncbox TCR Beta</h2>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                To participate in the private Android beta, contact us using the email address associated with your Google Play account.<br><br>
+                Send your request to: <br>
+                <strong style="color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 15px; user-select: all;">beta@osrtime.com</strong>
+            </p>
+            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+                After we register your Google account for the private test, you will receive:<br>
+                &bull; your Google Play beta access link<br>
+                &bull; your personal promotional code<br>
+                &bull; installation instructions
+            </p>
+            <div style="font-size: 12px; color: var(--text-secondary); background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent-cool); padding: 12px; margin-bottom: 24px;">
+                <strong>Important:</strong> Use the same Google account that you use in the Google Play Store.
+            </div>
+            
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=beta@osrtime.com&su=OSRTIME%20Syncbox%20TCR%20Beta%20Access&body=Hello%20OSRTIME%2C%0A%0AI%20would%20like%20to%20join%20the%20OSRTIME%20Syncbox%20TCR%20Android%20beta.%0A%0AAndroid%20device%3A%0AAndroid%20version%3A%0AThis%20email%20address%20is%20associated%20with%20my%20Google%20Play%20account.%0A%0ABest%20regards" target="_blank" rel="noopener noreferrer" style="flex: 1; display: inline-flex; justify-content: center; align-items: center; background: var(--accent-cool); color: #000; font-weight: 600; text-decoration: none; padding: 12px 16px; border-radius: 6px; font-size: 13px; letter-spacing: 0.5px;">
+                    Open Gmail
+                </a>
+                <button id="btn-copy-email" style="flex: 1; display: inline-flex; justify-content: center; align-items: center; background: var(--surface-2); border: 1px solid var(--border-medium); color: var(--text-primary); font-weight: 500; padding: 12px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; letter-spacing: 0.5px;">
+                    Copy Email Address
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const modal = document.getElementById('beta-modal');
+        const btnOpen = document.getElementById('btn-open-modal');
+        const btnClose = document.getElementById('btn-close-modal');
+        const btnCopy = document.getElementById('btn-copy-email');
+        
+        btnOpen.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        });
+        
+        btnClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        btnCopy.addEventListener('click', () => {
+            navigator.clipboard.writeText('beta@osrtime.com').then(() => {
+                const originalText = btnCopy.textContent;
+                btnCopy.textContent = 'Copied!';
+                btnCopy.style.borderColor = 'var(--accent-cool)';
+                btnCopy.style.color = 'var(--accent-cool)';
+                setTimeout(() => {
+                    btnCopy.textContent = 'Copy Email Address';
+                    btnCopy.style.borderColor = 'var(--border-medium)';
+                    btnCopy.style.color = 'var(--text-primary)';
+                }, 2000);
+            });
+        });
+    </script>
 </body>
 </html>
