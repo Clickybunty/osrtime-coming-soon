@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OSRTIME Sync-Box TCR – App Manual</title>
+    <meta name="description" content="Complete operation guide for OSRTIME Sync-Box TCR. Learn about timecode generation, network sync, LTC, recording, and audio routing.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --page-bg: #0A0A0A;
+            --surface-1: #111111;
+            --surface-2: #1A1A1A;
+            --surface-3: #222222;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-muted: #666666;
+            --border-subtle: #222222;
+            --border-medium: #333333;
+            --accent-cool: #80CBC4;
+            --accent-red: #FF5252;
+            --nav-bg: #0F1113;
+            --nav-selected: #69F0AE;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--page-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-wrapper {
+            padding: 48px 24px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .headline-main {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/global-header.css">
+    <link rel="stylesheet" href="../assets/css/manual.css">
+</head>
+<body>
+
+    <header class="global-header">
+        <div class="global-header-inner">
+            <a href="../" class="global-logo">
+                <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/osertimeDotcom.png" alt="OSRTIME Logo">
+            </a>
+            <nav class="global-nav">
+                <a href="../" class="global-nav-link">Home</a>
+                <a href="../knowledge/" class="global-nav-link">Knowledge</a>
+                <a href="../manual/" class="global-nav-link active">Manual</a>
+                <a href="../beta/" class="global-nav-link beta-link">Beta</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="mobile-nav">
+            <a href="../" class="global-nav-link">Home</a>
+            <a href="../knowledge/" class="global-nav-link">Knowledge</a>
+            <a href="../manual/" class="global-nav-link active">Manual</a>
+            <a href="../beta/" class="global-nav-link beta-link">Beta</a>
+        </div>
+    </header>
+
+    <div class="page-wrapper" style="padding-top: 100px;">
+        
+        <div style="margin-bottom: 56px;">
+            <h1 class="headline-main">User Manual</h1>
+            <p style="font-size: 18px; color: var(--text-secondary); max-width: 600px;">
+                Complete operation guide for OSRTIME Sync-Box TCR — your professional timecode generator and sync box.
+            </p>
+        </div>
+
+        <div class="manual-layout">
+            <!-- Sidebar Navigation -->
+            <aside class="manual-sidebar">
+                <div class="toc-title">Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#getting-started">Getting Started</a></li>
+                    <li><a href="#master">Master Clock</a></li>
+                    <li><a href="#control">Control</a></li>
+                    <li><a href="#routing">Audio &amp; Routing</a></li>
+                    <li><a href="#recording">Recording</a></li>
+                    <li><a href="#network-sync">Network &amp; Sync</a></li>
+                    <li><a href="#jam-sync">Jam Sync</a></li>
+                    <li><a href="#slave-mode">Slave Mode</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                </ul>
+            </aside>
+
+            <!-- Content Area -->
+            <main class="manual-content">
+                
+                <!-- ═══════════════════════════════════════ -->
+                <!-- GETTING STARTED                         -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="getting-started" class="manual-section">
+                    <h2>Getting Started</h2>
+                    <p>OSRTIME Sync-Box TCR transforms your Android device into a professional timecode generator and sync box for film, broadcast, and live production.</p>
+                    
+                    <h3>Installation &amp; First Launch</h3>
+                    <p>After installing the application (currently available via Private Beta), launch it to begin. On first start, you will be asked to grant the required system permissions.</p>
+                    
+                    <div class="manual-note">
+                        <div class="box-title">Essential Permissions</div>
+                        <p><strong>Microphone</strong> — Required for LTC signal input via the device microphone or USB audio interface.<br>
+                        <strong>Storage</strong> — Required for BWF field recording to local storage.<br>
+                        <strong>Local Network</strong> — Required for Wi-Fi timecode synchronization between devices.</p>
+                    </div>
+
+                    <h3>The App at a Glance</h3>
+                    <p>After granting permissions, the app opens on the <strong>Master</strong> page showing a running Time of Day (TOD) timecode. The bottom navigation bar provides access to all major areas of the app:</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/master-clock-default.jpg" alt="OSRTIME Master Clock - Default View" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Master page at first launch — TOD mode, 24 fps</div>
+                    </div>
+
+                    <table class="nav-tabs-table">
+                        <thead>
+                            <tr>
+                                <th>Tab</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Master</td>
+                                <td>Main timecode display — shows the active generator output in a large, readable format.</td>
+                            </tr>
+                            <tr>
+                                <td>Control</td>
+                                <td>Central configuration — manage TOD, Custom timer, Jam sync, and Slave sources.</td>
+                            </tr>
+                            <tr>
+                                <td>Routing</td>
+                                <td>Audio input configuration — select microphone or USB interface, arm recording channels.</td>
+                            </tr>
+                            <tr>
+                                <td>Record</td>
+                                <td>BWF field recording — view, manage, and export recorded audio with embedded timecode.</td>
+                            </tr>
+                            <tr>
+                                <td>Network</td>
+                                <td>Wi-Fi synchronization — discover devices, sync timecode clocks across a fleet.</td>
+                            </tr>
+                            <tr>
+                                <td>Settings</td>
+                                <td>App configuration — language, audio preferences, recording format, storage path.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- MASTER CLOCK                            -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="master" class="manual-section">
+                    <h2>Master Clock</h2>
+                    <p>The Master page is the primary output display of the timecode engine. It shows the current timecode in a large seven-segment format, optimized for visibility on dark sets and at a distance.</p>
+
+                    <h3>Display Elements</h3>
+                    <p>The Master display consists of several information layers:</p>
+                    <ul>
+                        <li><strong>Timecode Display</strong> — HH:MM:SS:FF in large green digits. The labels <span class="ui-label">H</span> <span class="ui-label">M</span> <span class="ui-label">S</span> and the frame rate indicator are shown above.</li>
+                        <li><strong>Date Line</strong> — Day of week and date below the timecode.</li>
+                        <li><strong>Mode Chip</strong> — Shows the current source mode: <span class="ui-label">TOD</span>, <span class="ui-label">CUST</span>, <span class="ui-label">JAM</span>, <span class="ui-label">SLV</span>, or <span class="ui-label amber">WIFI SLV</span>.</li>
+                        <li><strong>Action Buttons</strong> — Fullscreen toggle, LTC audio output (mute/unmute), and Record toggle.</li>
+                    </ul>
+
+                    <h3>Timing Sources</h3>
+                    <p>The timecode generator can operate in four distinct modes, each selectable from the <a href="#control" style="color: var(--accent-cool);">Control</a> page:</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-label">TOD</div>
+                            <p class="feature-desc">Time of Day — locks the timecode to the device's real-time clock. The default and most common mode for production.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">Custom</div>
+                            <p class="feature-desc">Free-running timecode from a user-defined start value. Independent of wall-clock time. Useful for rehearsals or custom labeling.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">JAM</div>
+                            <p class="feature-desc">One-time sync from an external source (LTC input or Wi-Fi master). After jamming, the clock free-runs independently.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">Slave</div>
+                            <p class="feature-desc">Continuously chases an incoming timecode source. The display tracks the external clock in real time.</p>
+                        </div>
+                    </div>
+
+                    <h3>WiFi Slave Display</h3>
+                    <p>When the device is operating as a Wi-Fi Slave, the Master display updates to reflect the remote source:</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/master-wifi-slave.jpg" alt="OSRTIME Master in WiFi Slave Mode" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Master display in WiFi Slave mode — the mode chip reads "WIFI SLV"</div>
+                    </div>
+                </section>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- CONTROL                                 -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="control" class="manual-section">
+                    <h2>Control</h2>
+                    <p>The Control page is the central configuration hub. It provides direct access to all timecode sources, jam status, and external input monitors.</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/control-overview.jpg" alt="OSRTIME Control Page Overview" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Control page — TOD, Custom timer, and Jam Status sections</div>
+                    </div>
+
+                    <h3>TOD Section</h3>
+                    <p>Shows the current Time of Day timecode with status (<span class="ui-label green">RUNNING</span>), selected frame rate, and an info button for technical details. Use <span class="ui-label">SET TOD TO NOW</span> to resynchronize with the device clock.</p>
+
+                    <h3>Custom Timer</h3>
+                    <p>An independent free-running timecode generator with its own frame rate selector. Provides preset buttons for quick start values:</p>
+                    <ul>
+                        <li><span class="ui-label">00:00:00:00</span> — Reset to midnight</li>
+                        <li><span class="ui-label">01:00:00:00</span> — Jump to one hour</li>
+                    </ul>
+
+                    <h3>Jam Status</h3>
+                    <p>Displays the currently jammed timecode value and its source. When no jam has been performed, it shows <span class="ui-label">NO JAM VALUE</span> with placeholder dashes.</p>
+
+                    <hr class="section-divider">
+
+                    <h3>External Input Sources</h3>
+                    <p>Below the Jam Status, two additional monitors appear when external sources are available:</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/control-jam-sources.jpg" alt="OSRTIME Control Page with LTC and WiFi Inputs" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Full Control view — LTC Input Monitor and WiFi Input both visible</div>
+                    </div>
+
+                    <ul>
+                        <li><strong>LTC Input Monitor</strong> — Decodes incoming Linear Timecode from the audio input. Shows lock status, detected frame rate, LTC channel selector, and a <span class="ui-label">JAM FROM LTC</span> button.</li>
+                        <li><strong>WiFi Input</strong> — Displays timecode received from a network Master device. Shows the Master identity, frame rate, confidence level, and signal age. Provides a <span class="ui-label">JAM FROM WIFI</span> button.</li>
+                    </ul>
+
+                    <h3>Jam Result</h3>
+                    <p>After performing a Jam (from either LTC or WiFi), the Jam Status section updates to confirm the operation:</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/control-jammed.jpg" alt="OSRTIME Control - Jammed from Remote" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Jam Status after successful WiFi Jam — shows "MASTER / JAMMED FROM REMOTE"</div>
+                    </div>
+                </section>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- AUDIO & ROUTING                         -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="routing" class="manual-section">
+                    <h2>Audio &amp; Routing</h2>
+                    <p>The Routing page configures which physical audio input the app uses, and how its channels are assigned for LTC reception and audio recording.</p>
+
+                    <h3>Built-in Microphone</h3>
+                    <p>By default, the app uses the device's built-in microphone in Auto Mode. This is sufficient for receiving LTC signals from a nearby source (e.g., a timecode slate or LTC output cable connected via the headphone jack).</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/routing-builtin-mic.jpg" alt="OSRTIME Routing - Built-in Microphone" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Routing page with built-in microphone — 1 channel (LTC), level meter active</div>
+                    </div>
+
+                    <h3>USB Audio Interface</h3>
+                    <p>When a class-compliant USB audio interface is connected, additional channels become available. OSRTIME supports up to 4 input channels simultaneously.</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/routing-usb-4ch.jpg" alt="OSRTIME Routing - USB 4-Channel Interface" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">USB interface connected — 4 channels with individual level meters and cross-point arming</div>
+                    </div>
+
+                    <h3>Cross-Point Routing &amp; Arming</h3>
+                    <p>The lower section shows the available recording tracks. Each channel can be individually armed (enabled) for recording:</p>
+                    <ul>
+                        <li><span class="ui-label green">CH1</span> — Typically assigned to LTC. Armed by default.</li>
+                        <li><span class="ui-label">CH2</span>, <span class="ui-label">CH3</span>, <span class="ui-label">CH4</span> — Additional audio channels from the USB interface. Enable by tapping the checkbox.</li>
+                    </ul>
+
+                    <div class="manual-tip">
+                        <div class="box-title">Pro Tip</div>
+                        <p>Use the <strong>RESCAN AUDIO DEVICES</strong> button after connecting or disconnecting a USB interface. The app will re-enumerate available inputs and update the channel list.</p>
+                    </div>
+                </section>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- RECORDING                               -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="recording" class="manual-section">
+                    <h2>Recording</h2>
+                    <p>The Record page manages BWF (Broadcast Wave Format) field recording with embedded timecode metadata. All recordings include precise timecode stamps for seamless post-production sync.</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/record-saved-session.jpg" alt="OSRTIME Record Page - Saved Session" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Record page showing a saved session — CH1 (LTC) recorded, CH2–CH4 (Audio) available</div>
+                    </div>
+
+                    <h3>Channel Layout</h3>
+                    <p>Each armed channel from the Routing configuration appears as a separate track card:</p>
+                    <ul>
+                        <li><span class="ui-label red">CH1 · LTC</span> — The primary timecode track. Shows <span class="ui-label green">AUDIO RECORDED</span> when data has been captured.</li>
+                        <li><span class="ui-label">CH2–CH4 · Audio</span> — Additional audio tracks. Each shows the source device and channel number.</li>
+                    </ul>
+                    <p>Level meters on each card show real-time signal strength during recording.</p>
+
+                    <h3>Starting a Recording</h3>
+                    <p>Recording is controlled via the <span class="ui-label red">REC</span> button visible on both the Master page and the persistent header bar. You do not need to be on the Record page to start or stop recording — it works from any page in the app.</p>
+
+                    <div class="manual-note">
+                        <div class="box-title">File Format</div>
+                        <p>Recordings are saved as BWF files with embedded iXML and bext metadata, including timecode, sample rate, and channel assignment. The default sample rate is 48.0 kHz, configurable in <a href="#settings" style="color: var(--accent-cool);">Settings</a>.</p>
+                    </div>
+                </section>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- NETWORK & SYNC                          -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="network-sync" class="manual-section">
+                    <h2>Network &amp; Sync</h2>
+                    <p>OSRTIME features a wireless synchronization engine that allows multiple devices to share a common timecode clock over standard Wi-Fi networks.</p>
+
+                    <h3>How It Works</h3>
+                    <div class="manual-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Connect to the Same Network</h4>
+                            <p>Ensure all devices are on the same Wi-Fi network or mobile hotspot. Use the <strong>HOTSPOT SETTINGS</strong> or <strong>WI-FI SETTINGS</strong> buttons on the Network page for quick access to system settings.</p>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Automatic Discovery</h4>
+                            <p>Devices discover each other automatically once they share a network. No manual IP configuration is required. The Network page shows all detected devices under <strong>NETWORK DEVICES</strong> with a <span class="status-pill synced">Connected</span> indicator.</p>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Assign Roles</h4>
+                            <p>Each device can operate as <span class="ui-label">MASTER</span> or <span class="ui-label">SLAVE</span>. The Master sends its timecode to all connected Slaves. Toggle the role using the Master/Slave selector.</p>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Synchronize</h4>
+                            <p>Press <span class="ui-label green">SYNC CHAIN</span> to begin synchronization. The status will transition through several phases.</p>
+                        </div>
+                    </div>
+
+                    <h3>Sync Lifecycle</h3>
+                    <p>A sync operation progresses through three stages:</p>
+
+                    <div class="screenshot-pair">
+                        <div class="screenshot-figure">
+                            <div class="screenshot-phone-frame">
+                                <img src="../assets/img/manual/network-pre-sync.jpg" alt="OSRTIME Network - Before Sync" loading="lazy">
+                            </div>
+                            <div class="screenshot-caption">Before sync — <span class="status-pill drifting">Drifting</span></div>
+                        </div>
+                        <div class="screenshot-figure">
+                            <div class="screenshot-phone-frame">
+                                <img src="../assets/img/manual/network-synced.jpg" alt="OSRTIME Network - Synced" loading="lazy">
+                            </div>
+                            <div class="screenshot-caption">After sync — <span class="status-pill synced">Synced</span></div>
+                        </div>
+                    </div>
+
+                    <table class="nav-tabs-table">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="status-pill drifting">Drifting</span></td>
+                                <td>Device is connected but timecodes are diverging. Sync is required.</td>
+                            </tr>
+                            <tr>
+                                <td>COMMITTING</td>
+                                <td>Sync is in progress. The Master is sending its clock reference to the Slave.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="status-pill synced">Synced</span></td>
+                                <td>Timecodes are aligned. Auto-Sync will periodically re-sync to maintain accuracy.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="manual-tip">
+                        <div class="box-title">Auto-Sync</div>
+                        <p>When enabled, Auto-Sync re-synchronizes at regular intervals (default: every 6 minutes). This ensures long-running sessions maintain frame-accurate alignment even as device clocks drift.</p>
+                    </div>
+                </section>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- JAM SYNC                                -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="jam-sync" class="manual-section">
+                    <h2>Jam Sync</h2>
+                    <p>Jam Sync is a one-time clock copy from an external source. Unlike Slave mode (which continuously chases), a Jam copies the current timecode value and then free-runs independently from the device's own crystal oscillator.</p>
+
+                    <h3>Jam Sources</h3>
+                    <p>OSRTIME can Jam from two sources:</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-label">LTC Input</div>
+                            <p class="feature-desc">Receives Linear Timecode via the microphone input or USB audio interface. Decodes the signal, displays the timecode, and allows one-tap Jam.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">WiFi Network</div>
+                            <p class="feature-desc">Receives timecode from a network Master device. Shows the Master identity, frame rate, confidence, and signal freshness (age).</p>
+                        </div>
+                    </div>
+
+                    <h3>Performing a Jam</h3>
+                    <div class="manual-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Navigate to Control</h4>
+                            <p>Open the Control page. Scroll down to see the <strong>LTC INPUT MONITOR</strong> and <strong>WIFI INPUT</strong> sections.</p>
+                        </div>
+                    </div>
+                    <div class="manual-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Confirm Signal Lock</h4>
+                            <p>Ensure the source is active. For LTC, the monitor should show <span class="ui-label green">LOCKED @ 24 FPS</span> (or your target rate). For WiFi, the Master's timecode and confidence should be visible.</p>
+                        </div>
+                    </div>
+                    <div class="manual-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Tap "JAM FROM …"</h4>
+                            <p>Press <span class="ui-label">JAM FROM LTC</span> or <span class="ui-label">JAM FROM WIFI</span>. The Jam Status section will immediately update to show the copied timecode and its source.</p>
+                        </div>
+                    </div>
+
+                    <h3>LTC Lock</h3>
+                    <p>When a valid LTC signal is being received, the LTC Input Monitor turns blue and displays the decoded timecode with the detected frame rate:</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/control-ltc-locked.jpg" alt="OSRTIME Control - LTC Locked at 24 FPS" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">LTC Input Monitor showing "LOCKED @ 24 FPS" — ready to Jam</div>
+                    </div>
+
+                    <div class="manual-warning">
+                        <div class="box-title">LTC Volume</div>
+                        <p>LTC is an uncompressed digital audio signal. Before monitoring LTC output, ensure headphones are disconnected or the volume is at a safe level. Accidental playback at high volume can damage hearing.</p>
+                    </div>
+                </section>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- SLAVE MODE                              -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="slave-mode" class="manual-section">
+                    <h2>Slave Mode</h2>
+                    <p>In Slave mode, the device continuously tracks an external timecode source in real time. Unlike Jam (which copies once and free-runs), Slave mode keeps the display locked to the incoming signal.</p>
+
+                    <h3>Selecting the Slave Source</h3>
+                    <p>When switching to Slave mode, a modal prompts you to choose the timecode source:</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/slave-source-select.jpg" alt="OSRTIME - Select Slave Source" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Select Slave Source — choose between LTC Input and WiFi Network</div>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-label">LTC Input</div>
+                            <p class="feature-desc">Chases the timecode decoded from the audio input. Requires a continuous LTC signal.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-label">WiFi Network</div>
+                            <p class="feature-desc">Chases the timecode broadcast by a network Master. Requires an active Wi-Fi connection with a Master device.</p>
+                        </div>
+                    </div>
+
+                    <h3>Active Slave State</h3>
+                    <p>Once Slave mode is active, the Control page reflects the new state:</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/slave-mode-active.jpg" alt="OSRTIME Control - Slave Mode Active" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Slave mode active — Jam Status shows "INACTIVE (SLAVE MODE)", SLV chip highlighted</div>
+                    </div>
+
+                    <p>The Master display will also update its mode chip to indicate the slave source — for example, <span class="ui-label amber">WIFI SLV</span> for Wi-Fi slave operation.</p>
+
+                    <div class="manual-note">
+                        <div class="box-title">Jam vs. Slave</div>
+                        <p><strong>Jam</strong> copies the external timecode once, then free-runs from the device's own clock. Best for battery-efficient, long-duration operation where occasional drift is acceptable.<br><br>
+                        <strong>Slave</strong> continuously tracks the external source. Guarantees frame-accurate alignment but requires a persistent connection to the source signal.</p>
+                    </div>
+                </section>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- SETTINGS                                -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="settings" class="manual-section">
+                    <h2>Settings</h2>
+                    <p>The Settings page provides global configuration options for language, audio behavior, and recording preferences.</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/settings-languages.jpg" alt="OSRTIME Settings - Language Selection" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Settings page — Language selection with 7 supported languages</div>
+                    </div>
+
+                    <h3>Language</h3>
+                    <p>OSRTIME supports the following interface languages:</p>
+                    <ul>
+                        <li>System Default</li>
+                        <li>English</li>
+                        <li>Deutsch</li>
+                        <li>Español</li>
+                        <li>中文（简体）</li>
+                        <li>العربية</li>
+                        <li>עברית</li>
+                    </ul>
+
+                    <h3>Audio</h3>
+                    <ul>
+                        <li><strong>Auto USB Select</strong> — Automatically switches to a USB audio device when one is connected. Disable this to keep using the built-in microphone even when a USB device is plugged in.</li>
+                    </ul>
+
+                    <h3>Recording</h3>
+                    <ul>
+                        <li><strong>Recording Folder</strong> — The storage location for recorded BWF files. Tap <span class="ui-label">CHANGE</span> to select a different directory.</li>
+                        <li><strong>Sample Rate</strong> — Default: 48.0 kHz. This is the standard broadcast sample rate for professional audio.</li>
+                    </ul>
+                </section>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- TROUBLESHOOTING                         -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="troubleshooting" class="manual-section">
+                    <h2>Troubleshooting</h2>
+                    <p>Common solutions for sync, audio, routing, and timecode workflow issues.</p>
+
+                    <h3>LTC Signal Not Detected</h3>
+                    <ul>
+                        <li>Ensure the Microphone permission is granted.</li>
+                        <li>Check the <a href="#routing" style="color: var(--accent-cool);">Routing</a> page — is the correct input device selected?</li>
+                        <li>Verify the LTC source is active and the cable connection is secure.</li>
+                        <li>Try pressing <strong>RESCAN AUDIO DEVICES</strong> on the Routing page.</li>
+                    </ul>
+
+                    <h3>Devices Not Discovering Each Other</h3>
+                    <ul>
+                        <li>Confirm all devices are connected to the same Wi-Fi network or hotspot.</li>
+                        <li>Check that Local Network permissions are granted.</li>
+                        <li>Some public or enterprise Wi-Fi networks block device-to-device communication. Use a mobile hotspot instead.</li>
+                    </ul>
+
+                    <h3>Sync Status Stuck on "Drifting"</h3>
+                    <ul>
+                        <li>Tap <span class="ui-label green">SYNC CHAIN</span> to initiate synchronization manually.</li>
+                        <li>Ensure one device is set as <span class="ui-label">MASTER</span> and the other as <span class="ui-label">SLAVE</span>.</li>
+                        <li>Enable <strong>Auto-Sync</strong> to maintain continuous alignment.</li>
+                    </ul>
+
+                    <h3>USB Audio Not Recognized</h3>
+                    <ul>
+                        <li>Only class-compliant (driverless) USB audio interfaces are supported.</li>
+                        <li>Use a USB OTG adapter if your device has a USB-C port.</li>
+                        <li>Press <strong>RESCAN AUDIO DEVICES</strong> after connecting.</li>
+                        <li>Check <a href="#settings" style="color: var(--accent-cool);">Settings</a> → Auto USB Select is enabled.</li>
+                    </ul>
+
+                    <h3>Recording Not Starting</h3>
+                    <ul>
+                        <li>Check that Storage permissions are granted.</li>
+                        <li>Verify the recording folder exists and has sufficient space.</li>
+                        <li>Ensure at least one channel is armed on the <a href="#routing" style="color: var(--accent-cool);">Routing</a> page.</li>
+                    </ul>
+
+                    <div class="manual-note">
+                        <div class="box-title">Need Help?</div>
+                        <p>For issues not covered here, contact us via the <a href="../beta/" style="color: var(--accent-cool);">Beta</a> page or reach out directly at support.</p>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+        
+        <div class="copyright" style="text-align: center; font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border-subtle); padding-top: 24px; margin-top: 40px;">
+            © 2026 OSRTIME<span style="margin: 0 8px;">·</span>All Rights Reserved<span style="margin: 0 8px;">·</span><a href="../privacy/" style="color: inherit; text-decoration: none;">Privacy</a>
+        </div>
+    </div>
+    
+    <script src="../assets/js/global-header.js"></script>
+    <script>
+        // Scroll spy for TOC highlighting
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.manual-section');
+            const navLinks = document.querySelectorAll('.toc-list a');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0px -80% 0px',
+                threshold: 0
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+            
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>

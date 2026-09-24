@@ -53,7 +53,7 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 48px 24px 40px;
+            padding: 100px 24px 40px;
             max-width: 960px;
             margin: 0 auto;
         }
@@ -216,8 +216,32 @@
             .content-section p, .content-section li { font-size: 14px; }
         }
     </style>
+    <link rel="stylesheet" href="../assets/css/global-header.css">
 </head>
 <body>
+
+    <header class="global-header">
+        <div class="global-header-inner">
+            <a href="../" class="global-logo">
+                <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/osertimeDotcom.png" alt="OSRTIME Logo">
+            </a>
+            <nav class="global-nav">
+                <a href="../" class="global-nav-link">Home</a>
+                <a href="../knowledge/" class="global-nav-link">Knowledge</a>
+                <a href="../manual/" class="global-nav-link" >Manual</a>
+                <a href="../beta/" class="global-nav-link beta-link">Beta</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="mobile-nav">
+            <a href="../" class="global-nav-link">Home</a>
+            <a href="../knowledge/" class="global-nav-link">Knowledge</a>
+            <a href="../manual/" class="global-nav-link" >Manual</a>
+            <a href="../beta/" class="global-nav-link beta-link">Beta</a>
+        </div>
+    </header>
 
     <div class="page-wrapper">
 
@@ -341,5 +365,6 @@
 
     </div>
 
+    <script src="../assets/js/global-header.js"></script>
 </body>
 </html>

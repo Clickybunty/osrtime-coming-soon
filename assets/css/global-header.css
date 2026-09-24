@@ -1,0 +1,96 @@
+/* ═══════════════════════════════════════════════════════
+   GLOBAL OSRTIME HEADER & NAVIGATION
+   ═══════════════════════════════════════════════════════ */
+
+.global-header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(12, 13, 15, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.global-header-inner {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+}
+.global-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.global-logo img {
+    height: 24px;
+    width: auto;
+    display: block;
+}
+.global-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+.global-nav-link {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.global-nav-link:hover, .global-nav-link.active {
+    color: var(--text-primary);
+}
+.global-nav-link.beta-link {
+    color: var(--accent-cool);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 16px;
+    border-radius: 100px;
+}
+.global-nav-link.beta-link:hover {
+    background: rgba(128, 203, 196, 0.1);
+    border-color: var(--accent-cool);
+}
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 4px;
+}
+.mobile-nav {
+    display: none;
+}
+@media (max-width: 768px) {
+    .global-nav {
+        display: none;
+    }
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .global-header.menu-open .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--surface-1);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 16px 24px;
+        gap: 24px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+}

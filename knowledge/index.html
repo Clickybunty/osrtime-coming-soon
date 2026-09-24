@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OSRTIME – Timecode Knowledge Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111214">
+  <link rel="icon" type="image/png" href="https://github.com/Clickybunty/assets/blob/main/osertime-logo-google-workspace.png?raw=true">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../assets/css/global-header.css">
+  <link rel="stylesheet" href="../assets/css/knowledge.css">
+</head>
+<body>
+
+  <header class="global-header">
+      <div class="global-header-inner">
+          <a href="../" class="global-logo">
+              <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/osertimeDotcom.png" alt="OSRTIME Logo">
+          </a>
+          <nav class="global-nav">
+              <a href="../" class="global-nav-link">Home</a>
+              <a href="../knowledge/" class="global-nav-link active">Knowledge</a>
+              <a href="../manual/" class="global-nav-link">Manual</a>
+              <a href="../beta/" class="global-nav-link beta-link">Beta</a>
+          </nav>
+          <button class="mobile-menu-btn" aria-label="Open menu">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+      </div>
+      <div class="mobile-nav">
+          <a href="../" class="global-nav-link">Home</a>
+          <a href="../knowledge/" class="global-nav-link active">Knowledge</a>
+          <a href="../manual/" class="global-nav-link">Manual</a>
+          <a href="../beta/" class="global-nav-link beta-link">Beta</a>
+      </div>
+  </header>
+
+  <div class="page-wrapper" style="padding-top: 100px;">
+    <header class="kc-header">
+       <div class="kc-badge">KNOWLEDGE CENTER</div>
+    </header>
+
+    <div class="hero-section">
+      <h1 class="hero-title">Timecode isn't a clock.<br><span>It's an address for frames.</span></h1>
+      <div class="hero-tc-display">01:23:45:12</div>
+      <p class="hero-sub">Frame Rate, Frame Count, Timecode, and Real Time are deeply connected, but they are not the same thing.</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="kc-nav">
+      <a href="#learn" class="kc-nav-item active" data-target="learn">LEARN</a>
+      <a href="#explore" class="kc-nav-item" data-target="explore">EXPLORE</a>
+      <a href="#reference" class="kc-nav-item" data-target="reference">REFERENCE</a>
+    </nav>
+
+    <!-- Sticky Glossary -->
+    <div class="glossary-bar">
+      <div class="glossary-item">
+        <div class="gl-term">Frame Rate</div>
+        <div class="gl-def">The physical speed of images (fps).</div>
+      </div>
+      <div class="glossary-item">
+        <div class="gl-term">Frame Count</div>
+        <div class="gl-def">Total number of passed frames.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="gl-term">Timecode</div>
+        <div class="gl-def">The address/label assigned to a frame.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="gl-term">Real Time</div>
+        <div class="gl-def">Actual elapsed wall-clock time.</div>
+      </div>
+      <div class="glossary-item">
+        <div class="gl-term">DF / NDF</div>
+        <div class="gl-def">Timecode numbering schemes.</div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="kc-content">
+       <!-- LEARN SECTION -->
+       <section id="learn" class="kc-section active">
+          
+          <div class="module-block" id="mod-1">
+             <h2 class="module-title">Timecode in 60 Seconds</h2>
+             <p class="module-desc">Timecode identifies frames. It does not automatically equal wall-clock time.</p>
+          <div class="module-block" id="mod-1">
+             <h2 class="module-title">Timecode in 60 Seconds</h2>
+             <p class="module-desc">Timecode identifies frames. It does not automatically equal wall-clock time.</p>
+             <div class="tc-interactive-display">
+                <div class="tc-segments">
+                   <div class="tc-segment" data-segment="hours">HH</div><span class="tc-colon">:</span>
+                   <div class="tc-segment" data-segment="minutes">MM</div><span class="tc-colon">:</span>
+                   <div class="tc-segment" data-segment="seconds">SS</div><span class="tc-colon">:</span>
+                   <div class="tc-segment" data-segment="frames">FF</div>
+                </div>
+                <div class="tc-segment-info" id="tc-segment-info">
+                   Tap a segment above to understand what it counts.
+                </div>
+             </div>
+          </div>
+
+          <div class="module-block" id="mod-2">
+             <h2 class="module-title">Frame Rate ≠ Timecode</h2>
+             <p class="module-desc">A frame physically exists. Timecode is just the address written on it.</p>
+             <div class="layer-viz">
+                 <div class="layer-row">
+                     <div class="layer-label">Timecode Labels</div>
+                     <div class="layer-boxes labels">
+                         <div class="l-box">00:00:00:00</div>
+                         <div class="l-box">00:00:00:01</div>
+                         <div class="l-box">00:00:00:02</div>
+                         <div class="l-box">00:00:00:03</div>
+                     </div>
+                 </div>
+                 <div class="layer-row">
+                     <div class="layer-label">Physical Frames</div>
+                     <div class="layer-boxes frames">
+                         <div class="f-box">Frame 1</div>
+                         <div class="f-box">Frame 2</div>
+                         <div class="f-box">Frame 3</div>
+                         <div class="f-box">Frame 4</div>
+                     </div>
+                 </div>
+             </div>
+          </div>
+
+          <div class="module-block" id="mod-3">
+             <h2 class="module-title">Why 23.976 and 29.97 exist</h2>
+             <p class="module-desc">They are historical remnants from the color TV transition, running exactly 1000/1001 slower than 24 and 30 fps.</p>
+             
+             <div class="math-accordion">
+                <button class="math-toggle">Show the math ↓</button>
+                <div class="math-content">
+                   <p>24 fps * (1000 / 1001) = 24000 / 1001 &approx; 23.976 fps</p>
+                   <p>30 fps * (1000 / 1001) = 30000 / 1001 &approx; 29.97 fps</p>
+                </div>
+             </div>
+          </div>
+
+          <div class="module-block" id="mod-4">
+             <h2 class="module-title">Real Time vs. Camera Time</h2>
+             <p class="module-desc">Because 29.97 fps is slower than 30 fps, a timecode counting to 30 will slowly drift away from a real wall clock.</p>
+             <div class="xy-chart">
+                 <svg viewBox="0 0 600 300" class="drift-svg">
+                     <!-- axes -->
+                     <line x1="60" y1="260" x2="560" y2="260" stroke="#5F6368" stroke-width="2"/>
+                     <line x1="60" y1="260" x2="60" y2="40" stroke="#5F6368" stroke-width="2"/>
+                     <text x="310" y="290" fill="#9AA0A6" font-size="12" text-anchor="middle">Camera Timecode (X)</text>
+                     <text x="30" y="150" fill="#9AA0A6" font-size="12" text-anchor="middle" transform="rotate(-90 30 150)">Real Time (Y)</text>
+                     
+                     <!-- Ideal line (30fps) -->
+                     <line x1="60" y1="260" x2="500" y2="40" stroke="#69F0AE" stroke-width="2" stroke-dasharray="6 6"/>
+                     <text x="490" y="30" fill="#69F0AE" font-size="12">Perfect Match</text>
+                     
+                     <!-- NDF Drift (29.97) -->
+                     <line x1="60" y1="260" x2="560" y2="70" stroke="#FF5252" stroke-width="3"/>
+                     <text x="560" y="90" fill="#FF5252" font-size="12" text-anchor="end">29.97 Drift</text>
+                 </svg>
+             </div>
+          </div>
+
+          <div class="module-block" id="mod-5">
+             <h2 class="module-title">NDF Drift</h2>
+             <p class="module-desc">At TC 01:00:00:00, 01:00:03.600 of real time has elapsed.</p>
+             <div class="drift-steps">
+                 <div class="drift-step"><span class="tc">TC 10 Min</span> <span class="rt">+0.6s Real Time</span></div>
+                 <div class="drift-step"><span class="tc">TC 20 Min</span> <span class="rt">+1.2s Real Time</span></div>
+                 <div class="drift-step"><span class="tc">TC 30 Min</span> <span class="rt">+1.8s Real Time</span></div>
+                 <div class="drift-step"><span class="tc">TC 40 Min</span> <span class="rt">+2.4s Real Time</span></div>
+                 <div class="drift-step"><span class="tc">TC 50 Min</span> <span class="rt">+3.0s Real Time</span></div>
+                 <div class="drift-step"><span class="tc">TC 60 Min</span> <span class="rt">+3.6s Real Time</span></div>
+             </div>
+          </div>
+
+          <div class="module-block" id="mod-6">
+             <h2 class="module-title">What Drop-Frame Actually Does</h2>
+             <p class="module-desc">Drop-Frame changes the labels—not the pictures—to keep the timecode closely aligned with the wall clock.</p>
+             <div class="layer-viz df-viz">
+                 <div class="layer-row">
+                     <div class="layer-label">DF Timecode</div>
+                     <div class="layer-boxes labels">
+                         <div class="l-box">...59;28</div>
+                         <div class="l-box">...59;29</div>
+                         <div class="l-box skip">Skipped ;00</div>
+                         <div class="l-box skip">Skipped ;01</div>
+                         <div class="l-box">...00;02</div>
+                         <div class="l-box">...00;03</div>
+                     </div>
+                 </div>
+                 <div class="layer-row">
+                     <div class="layer-label">Physical Frames</div>
+                     <div class="layer-boxes frames">
+                         <div class="f-box">Frame</div>
+                         <div class="f-box">Frame</div>
+                         <div class="f-box solid">Frame</div>
+                         <div class="f-box solid">Frame</div>
+                         <div class="f-box">Frame</div>
+                         <div class="f-box">Frame</div>
+                     </div>
+                 </div>
+             </div>
+             <div class="strong-statement">NO VIDEO FRAMES ARE REMOVED.</div>
+          </div>
+
+          <div class="module-block" id="mod-7">
+             <h2 class="module-title">The 10-Minute DF Cycle</h2>
+             <p class="module-desc">To maintain accuracy, frames ;00 and ;01 are skipped every minute, EXCEPT every 10th minute.</p>
+             <div class="df-grid-container">
+                 <div class="df-grid">
+                     <!-- 10 minutes -->
+                     <button class="df-min skip" data-min="1">Min 1<br><span>(skip 2)</span></button>
+                     <button class="df-min skip" data-min="2">Min 2<br><span>(skip 2)</span></button>
+                     <button class="df-min skip" data-min="3">Min 3<br><span>(skip 2)</span></button>
+                     <button class="df-min skip" data-min="4">Min 4<br><span>(skip 2)</span></button>
+                     <button class="df-min skip" data-min="5">Min 5<br><span>(skip 2)</span></button>
+                     <button class="df-min skip" data-min="6">Min 6<br><span>(skip 2)</span></button>
+                     <button class="df-min skip" data-min="7">Min 7<br><span>(skip 2)</span></button>
+                     <button class="df-min skip" data-min="8">Min 8<br><span>(skip 2)</span></button>
+                     <button class="df-min skip" data-min="9">Min 9<br><span>(skip 2)</span></button>
+                     <button class="df-min noskip" data-min="10">Min 10<br><span>(NO SKIP)</span></button>
+                 </div>
+                 <div class="df-grid-result" id="df-grid-result">
+                     Tap a minute above to see the timecode transition.
+                 </div>
+             </div>
+          </div>
+
+          <div class="module-block" id="mod-8">
+             <h2 class="module-title">NDF vs. DF</h2>
+             <p class="module-desc">Same physical frames. Different numbering.</p>
+             <div class="compare-viz">
+                 <div class="comp-col">
+                     <div class="comp-title">NDF Numbering</div>
+                     <div class="l-box">00:00:59:29</div>
+                     <div class="l-box">00:01:00:00</div>
+                     <div class="l-box">00:01:00:01</div>
+                     <div class="l-box">00:01:00:02</div>
+                 </div>
+                 <div class="comp-col center">
+                     <div class="comp-title">Physical Frames</div>
+                     <div class="f-box">Frame N</div>
+                     <div class="f-box solid">Frame N+1</div>
+                     <div class="f-box solid">Frame N+2</div>
+                     <div class="f-box">Frame N+3</div>
+                 </div>
+                 <div class="comp-col">
+                     <div class="comp-title">DF Numbering</div>
+                     <div class="l-box">00:00:59;29</div>
+                     <div class="l-box skip">Skipped</div>
+                     <div class="l-box skip">Skipped</div>
+                     <div class="l-box">00:01:00;02</div>
+                 </div>
+             </div>
+          </div>
+
+          <div class="module-block" id="mod-9">
+             <h2 class="module-title">Timecode in the Wild</h2>
+             <p class="module-desc">When shooting, your camera writes timecode into the metadata. In an NLE like Premiere Pro, DaVinci Resolve, or Avid Media Composer, the timeline needs to match both the physical frame rate and the timecode counting method (DF/NDF). Otherwise, audio synced via LTC will slowly drift out of phase, or edits will reference the wrong frames.</p>
+          </div>
+
+       </section>
+
+       <!-- EXPLORE SECTION -->
+       <section id="explore" class="kc-section">
+          <div class="module-block">
+             <h2 class="module-title">Universal Timecode Calculator</h2>
+             <p class="module-desc">Change any value below to see how it affects the others.</p>
+             
+             <!-- Calculator UI -->
+             <div class="calc-container">
+                 <div class="calc-grid">
+                     <div class="calc-col">
+                         <label>Frame Rate</label>
+                         <select id="calc-rate" class="calc-input">
+                             <option value="23.976">23.976</option>
+                             <option value="24" selected>24</option>
+                             <option value="29.97NDF">29.97 NDF</option>
+                             <option value="29.97DF">29.97 DF</option>
+                             <option value="30">30</option>
+                         </select>
+                     </div>
+                     <div class="calc-col">
+                         <label>Timecode</label>
+                         <input type="text" id="calc-tc" class="calc-input tc-font" value="01:00:00:00">
+                     </div>
+                     <div class="calc-col">
+                         <label>Real Time</label>
+                         <input type="text" id="calc-rt" class="calc-input tc-font" value="01:00:00.000">
+                     </div>
+                     <div class="calc-col">
+                         <label>Frame Count</label>
+                         <input type="text" id="calc-fc" class="calc-input tc-font" value="86400">
+                     </div>
+                 </div>
+
+                 <div class="calc-perspectives">
+                     <div class="perspective-box">
+                        <div class="persp-title">After exacly 1 hour Real Time</div>
+                        <div class="persp-desc">What does the camera display?</div>
+                        <div id="persp-a-result" class="persp-val">--</div>
+                     </div>
+                     <div class="perspective-box">
+                        <div class="persp-title">At 1 hour Timecode</div>
+                        <div class="persp-desc">How much Real Time has passed?</div>
+                        <div id="persp-b-result" class="persp-val">--</div>
+                     </div>
+                 </div>
+             </div>
+             
+          </div>
+       </section>
+
+       <!-- PRODUCT MODULE -->
+       <section id="product" class="product-section">
+           <div class="product-copy">
+               <div class="product-eyebrow">FROM THEORY TO THE REAL WORLD</div>
+               <h2 class="product-headline">Meet OSRTIME Sync-Box TCR</h2>
+               <p class="product-desc">You've seen how timecode works.<br>Now take it into a real production workflow &mdash; directly on Android.</p>
+               <div class="product-ctas">
+                   <a href="../beta/" class="product-cta primary">Join Android Beta</a>
+                   <a href="../manual/" class="product-cta secondary">Explore the App</a>
+               </div>
+           </div>
+           <div class="product-visual">
+               <img src="../assets/img/osrtime_syncbox_tcr_mockup.png" alt="OSRTIME Sync-Box TCR — Beta Testers Wanted. Professional timecode on Android, shown on a film set." class="product-mockup">
+           </div>
+       </section>
+
+       <!-- REFERENCE SECTION -->
+       <section id="reference" class="kc-section">
+          <div class="module-block">
+             <h2 class="module-title">SMPTE Corner</h2>
+             <p class="module-desc">Deep technical reference for standards and edge cases.</p>
+             
+             <div class="reference-grid">
+                <div class="ref-card">
+                   <h3 class="ref-title">SMPTE ST 12-1</h3>
+                   <p class="ref-text">The foundational standard defining Time and Control Code. It specifies the 80-bit structure used for addressing video frames, ensuring consistent interchange across broadcast and production equipment.</p>
+                </div>
+                <div class="ref-card">
+                   <h3 class="ref-title">LTC (Linear Timecode)</h3>
+                   <p class="ref-text">Timecode encoded as an audio signal (Manchester biphase). Because it's audible, it can be recorded onto standard audio tracks, making it a universal method for syncing audio and video devices.</p>
+                </div>
+                <div class="ref-card">
+                   <h3 class="ref-title">Timecode Label vs. Clock</h3>
+                   <p class="ref-text">A timecode is purely an address assigned to a frame. Even if it looks like a clock (HH:MM:SS:FF), it does not measure elapsed time, and standard NDF rates like 29.97 will inevitably diverge from a real wall clock.</p>
+                </div>
+                <div class="ref-card">
+                   <h3 class="ref-title">User Bits</h3>
+                   <p class="ref-text">32 bits within the 80-bit timecode word reserved for user data. Typically used to store the date (e.g., YY:MM:DD), camera roll numbers, or production metadata.</p>
+                </div>
+                <div class="ref-card">
+                   <h3 class="ref-title">24-Hour Wrap</h3>
+                   <p class="ref-text">By standard, timecode rolls over to 00:00:00:00 after 23:59:59:XX. Some continuous recording systems use the date in the User Bits to differentiate days, as the primary counter resets.</p>
+                </div>
+                <div class="ref-card">
+                   <h3 class="ref-title">High Frame Rate (HFR)</h3>
+                   <p class="ref-text">Rates like 50, 59.94, and 60 fps. Historically, timecode was built for max 30 fps. HFR systems either count frames up to 59, or they transmit a 30 fps timecode while adding a flag to indicate the specific field/frame, though modern extensions formally support higher frame limits.</p>
+                </div>
+             </div>
+          </div>
+       </section>
+    </main>
+
+  </div>
+  <script src="../assets/js/global-header.js"></script>
+  <script type="module" src="../assets/js/knowledge.js"></script>
+</body>
+</html>
