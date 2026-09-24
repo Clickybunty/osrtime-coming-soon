@@ -196,7 +196,7 @@
                     <div class="feature-grid">
                         <div class="feature-item">
                             <div class="feature-label">TOD</div>
-                            <p class="feature-desc">Time of Day — locks the timecode to the device's real-time clock. The default and most common mode for production.</p>
+                            <p class="feature-desc">Time of Day — sets the timecode from the device's current clock and then keeps it running with the OSRTIME timing engine. The default mode for time-of-day workflows.</p>
                         </div>
                         <div class="feature-item">
                             <div class="feature-label">Custom</div>
@@ -239,6 +239,19 @@
 
                     <h3>TOD Section</h3>
                     <p>Shows the current Time of Day timecode with status (<span class="ui-label green">RUNNING</span>), selected frame rate, and an info button for technical details. Use <span class="ui-label">SET TOD TO NOW</span> to resynchronize with the device clock.</p>
+
+                    <div class="screenshot-figure">
+                        <div class="screenshot-phone-frame">
+                            <img src="../assets/img/manual/control-frame-rate-selector.jpg" alt="OSRTIME Control - Frame-rate selector" loading="lazy">
+                        </div>
+                        <div class="screenshot-caption">Frame-rate selector — standard and high-frame-rate options</div>
+                    </div>
+
+                    <h3>Frame Rate</h3>
+                    <p>For Time of Day (TOD), select the timecode frame rate from the frame-rate menu. The selected rate determines how the running TOD timecode is represented.</p>
+                    <p>The Custom timer has its own frame-rate selector and can therefore run at a different frame rate from TOD.</p>
+                    <p>When synchronizing from an external timecode source, manual frame-rate selection is normally not required. OSRTIME detects the incoming timecode format and uses the corresponding rate for synchronization.</p>
+                    <p>High-frame-rate modes use an appropriate LTC transport rate, shown in parentheses in the selector — for example, 50 fps (25LTC) or 60 fps (30LTC).</p>
 
                     <h3>Custom Timer</h3>
                     <p>An independent free-running timecode generator with its own frame rate selector. Provides preset buttons for quick start values:</p>
@@ -286,7 +299,7 @@
                     <p>The Routing page configures which physical audio input the app uses, and how its channels are assigned for LTC reception and audio recording.</p>
 
                     <h3>Built-in Microphone</h3>
-                    <p>By default, the app uses the device's built-in microphone in Auto Mode. This is sufficient for receiving LTC signals from a nearby source (e.g., a timecode slate or LTC output cable connected via the headphone jack).</p>
+                    <p>By default, the app uses the device's built-in microphone in Auto Mode. This can be used for receiving LTC signals acoustically from a nearby source. For a direct wired LTC connection, use a compatible audio input or USB audio interface.</p>
 
                     <div class="screenshot-figure">
                         <div class="screenshot-phone-frame">
@@ -441,7 +454,7 @@
                 <!-- ═══════════════════════════════════════ -->
                 <section id="jam-sync" class="manual-section">
                     <h2>Jam Sync</h2>
-                    <p>Jam Sync is a one-time clock copy from an external source. Unlike Slave mode (which continuously chases), a Jam copies the current timecode value and then free-runs independently from the device's own crystal oscillator.</p>
+                    <p>Jam Sync is a one-time clock copy from an external source. Unlike Slave mode (which continuously chases), a Jam copies the current timecode value and then free-runs independently using the OSRTIME Virtual Precision Oscillator (VPO).</p>
 
                     <h3>Jam Sources</h3>
                     <p>OSRTIME can Jam from two sources:</p>
@@ -538,7 +551,7 @@
 
                     <div class="manual-note">
                         <div class="box-title">Jam vs. Slave</div>
-                        <p><strong>Jam</strong> copies the external timecode once, then free-runs from the device's own clock. Best for battery-efficient, long-duration operation where occasional drift is acceptable.<br><br>
+                        <p><strong>Jam</strong> copies the external timecode once, then free-runs using the OSRTIME Virtual Precision Oscillator (VPO). Best for battery-efficient, long-duration operation where occasional drift is acceptable.<br><br>
                         <strong>Slave</strong> continuously tracks the external source. Guarantees frame-accurate alignment but requires a persistent connection to the source signal.</p>
                     </div>
                 </section>
@@ -550,14 +563,15 @@
                     <h2>Settings</h2>
                     <p>The Settings page provides global configuration options for language, audio behavior, and recording preferences.</p>
 
+                    <h3>Language</h3>
+                    
                     <div class="screenshot-figure">
                         <div class="screenshot-phone-frame">
-                            <img src="../assets/img/manual/settings-languages.jpg" alt="OSRTIME Settings - Language Selection" loading="lazy">
+                            <img src="../assets/img/manual/settings-language-selector.jpg" alt="OSRTIME Settings - Language selector" loading="lazy">
                         </div>
-                        <div class="screenshot-caption">Settings page — Language selection with 7 supported languages</div>
+                        <div class="screenshot-caption">Settings — interface language selection</div>
                     </div>
-
-                    <h3>Language</h3>
+                    
                     <p>OSRTIME supports the following interface languages:</p>
                     <ul>
                         <li>System Default</li>
