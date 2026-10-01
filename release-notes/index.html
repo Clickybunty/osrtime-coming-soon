@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Notes – OSRTIME</title>
+    <meta name="description" content="Updates, fixes and improvements to OSRTIME Syncbox TCR.">
+    <meta name="theme-color" content="#111214">
+
+    <link rel="icon" type="image/png" href="https://github.com/Clickybunty/assets/blob/main/osertime-logo-google-workspace.png?raw=true">
+
+    <style>
+        /* ═══════════════════════════════════════════════════════
+           OSRTIME – PROFESSIONAL STUDIO DESIGN
+           ═══════════════════════════════════════════════════════ */
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* ── Page Design System ── */
+            --page-bg: #0C0D0F;
+            --surface-1: #141517;
+            --surface-2: #1A1C1F;
+            --surface-3: #222428;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-medium: rgba(255, 255, 255, 0.10);
+            --text-primary: #E8EAED;
+            --text-secondary: #9AA0A6;
+            --text-muted: #5F6368;
+            --accent-cool: #80CBC4;
+            --accent-blue: #81D4FA;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--page-bg);
+            color: var(--text-primary);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── MAIN LAYOUT ── */
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 100px 24px 40px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* ── HEADLINE SECTION ── */
+        .headline-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        .headline-main {
+            font-size: clamp(26px, 4.5vw, 42px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        .headline-sub {
+            font-size: clamp(14px, 2vw, 17px);
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ── CONTENT SECTION ── */
+        .notes-content {
+            width: 100%;
+            max-width: 720px;
+            background: var(--surface-1);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+
+        .notes-content h2 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--accent-cool);
+            margin-top: 0;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .notes-content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 32px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .notes-content p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .notes-content ul {
+            margin-left: 20px;
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+        }
+
+        .notes-content li {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .notes-content strong {
+            color: var(--text-primary);
+        }
+        
+        .notes-content .note-box {
+            background: var(--surface-2);
+            border-left: 4px solid var(--accent-blue);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 24px;
+        }
+        
+        .notes-content .note-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── FOOTER ── */
+        .copyright {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+            text-align: center;
+        }
+        .footer-sep {
+            margin: 0 8px;
+            opacity: 0.3;
+        }
+        .impressum-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+        .impressum-link:hover {
+            color: var(--text-secondary);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .notes-content {
+                padding: 24px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/global-header.css">
+</head>
+<body>
+
+    <header class="global-header">
+        <div class="global-header-inner">
+            <a href="../" class="global-logo">
+                <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/osertimeDotcom.png" alt="OSRTIME Logo">
+            </a>
+            <nav class="global-nav">
+                <a href="../" class="global-nav-link">Home</a>
+                <a href="../knowledge/" class="global-nav-link">Knowledge</a>
+                <a href="../manual/" class="global-nav-link">Manual</a>
+                <a href="../release-notes/" class="global-nav-link active">Release Notes</a>
+                <a href="../beta/" class="global-nav-link beta-link">Beta</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="mobile-nav">
+            <a href="../" class="global-nav-link">Home</a>
+            <a href="../knowledge/" class="global-nav-link">Knowledge</a>
+            <a href="../manual/" class="global-nav-link">Manual</a>
+            <a href="../release-notes/" class="global-nav-link active">Release Notes</a>
+            <a href="../beta/" class="global-nav-link beta-link">Beta</a>
+        </div>
+    </header>
+
+    <div class="page-wrapper">
+
+        <div class="headline-section">
+            <h1 class="headline-main">Release Notes</h1>
+            <p class="headline-sub">Updates, fixes and improvements to OSRTIME Syncbox TCR.</p>
+        </div>
+
+        <div class="notes-content">
+            <h2>1.0.1 — Audio Routing & 24-Bit Stability Update</h2>
+
+            <h3>What changed?</h3>
+            <p>This update focuses primarily on <strong>external audio devices, USB audio routing, and 24-bit recording stability</strong>.</p>
+            <p>During beta testing, we discovered that Android audio devices can report 24-bit support in different ways. A device may appear to support 24-bit audio while Android is not necessarily able to open that particular format through the same recording path. Previously, attempting to switch to 24-bit in such a situation could leave the audio system in an unstable state or cause the audio path to stop responding.</p>
+
+            <h3>What we fixed</h3>
+            <p>OSRTIME Syncbox TCR now handles these situations much more safely.</p>
+            <ul>
+                <li>Improved detection and handling of external USB audio devices.</li>
+                <li>Improved switching between built-in, wired, and USB audio inputs.</li>
+                <li>Improved handling of 16-bit and 24-bit audio capabilities.</li>
+                <li>Added support for 24-bit recording on compatible USB audio devices.</li>
+                <li>Devices that cannot currently start the requested 24-bit format can safely fall back to 16-bit instead.</li>
+                <li>Fixed an issue where attempting to use an unsupported 24-bit configuration could leave the audio system unresponsive.</li>
+                <li>Improved stability when connecting, disconnecting, and manually selecting external audio devices.</li>
+            </ul>
+
+            <h3>About the 16-bit fallback</h3>
+            <div class="note-box">
+                <p>If you select <strong>24-bit</strong> and OSRTIME Syncbox TCR reports that it has fallen back to <strong>16-bit</strong>, this is a normal compatibility behavior and does not indicate a crash or malfunction.</p>
+                <p>Because different USB audio devices expose 24-bit audio to Android differently, support depends on both the connected hardware and the audio format Android makes available to the app. Rather than forcing an incompatible configuration that could freeze the audio system, OSRTIME Syncbox TCR now safely and seamlessly falls back to a working 16-bit format.</p>
+            </div>
+            <p>We are continuing to expand compatibility with additional 24-bit USB audio implementations.</p>
+
+            <h3>Tested during this development cycle</h3>
+            <p>Testing included several different input configurations, including:</p>
+            <ul>
+                <li>Built-in Android microphone</li>
+                <li>Wired 3.5 mm microphone input</li>
+                <li>USB-C to 3.5 mm audio adapters</li>
+                <li>DJI Mic 3</li>
+                <li>Creative Sound Blaster Play</li>
+                <li>Behringer UMC204HD</li>
+                <li>Zoom UAC-232</li>
+            </ul>
+            <p>The purpose of testing different devices is not only to support individual products, but to make the audio system more robust across the wide variety of USB audio hardware available for Android.</p>
+
+            <h3>Beta testing continues</h3>
+            <p>OSRTIME Syncbox TCR is still being actively tested. If you encounter unexpected behaviour, a device that does not work correctly, or a workflow that could be improved, please let us know.</p>
+            <p>Real-world testing across different Android devices and audio hardware directly helps us improve compatibility and stability before release.</p>
+            <p>Thank you to everyone participating in the OSRTIME Syncbox TCR beta and contributing feedback, hardware tests, and bug reports.</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="copyright">
+            © 2026 OSRTIME<span class="footer-sep">•</span>All Rights Reserved<span class="footer-sep">•</span><a href="../privacy/" class="impressum-link">Privacy / Datenschutz</a><span class="footer-sep">•</span><a href="https://mein.online-impressum.de/hardwarestream/" target="_blank" rel="noopener noreferrer" class="impressum-link" id="impressum-link">Impressum</a>
+        </div>
+
+    </div>
+
+    <script src="../assets/js/global-header.js"></script>
+</body>
+</html>
