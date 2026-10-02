@@ -102,6 +102,7 @@
                     <li><a href="#control">Control</a></li>
                     <li><a href="#routing">Audio &amp; Routing</a></li>
                     <li><a href="#recording">Recording</a></li>
+                    <li><a href="#usb-24bit">24-bit USB Setup</a></li>
                     <li><a href="#network-sync">Network &amp; Sync</a></li>
                     <li><a href="#jam-sync">Jam Sync</a></li>
                     <li><a href="#slave-mode">Slave Mode</a></li>
@@ -365,6 +366,158 @@
                 </section>
 
                 <!-- ═══════════════════════════════════════ -->
+                <!-- 24-BIT USB SETUP                        -->
+                <!-- ═══════════════════════════════════════ -->
+                <section id="usb-24bit" class="manual-section">
+                    <h2>Recording with a USB interface at 24 bit</h2>
+                    <p>Connecting a USB audio interface or having it automatically selected does not automatically enable 24-bit recording. For 24-bit recording, you must explicitly manually select the interface and configure the bit depth in settings.</p>
+
+                    <div class="manual-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Connect a compatible USB audio interface</h4>
+                            <p>Before connection, the Routing page typically shows the built-in microphone in Auto Mode.</p>
+                            <div class="screenshot-figure">
+                                <div class="screenshot-phone-frame">
+                                    <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/Screenshot_2026-10-02-16-47-47-261_com.worldtimecode.world_timecode.jpg" alt="Routing showing Auto Mode with built-in microphone" loading="lazy">
+                                </div>
+                                <div class="screenshot-caption">Before connection: Auto Mode with built-in microphone</div>
+                            </div>
+                            <p>After connection, Auto Mode may automatically display two input channels. <strong>This is not a manual selection yet and does not confirm 24-bit operation.</strong></p>
+                            <div class="screenshot-figure">
+                                <div class="screenshot-phone-frame">
+                                    <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/Screenshot_2026-10-02-16-47-58-575_com.worldtimecode.world_timecode.jpg" alt="Routing showing Auto Mode with USB interface and two channels" loading="lazy">
+                                </div>
+                                <div class="screenshot-caption">USB connected in Auto Mode: Not yet manually selected</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Open Routing</h4>
+                            <p>Navigate to the Routing page via the bottom navigation bar.</p>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Explicitly select the USB interface</h4>
+                            <p>Open <strong>Physical Input Routing</strong> and explicitly select the named USB interface (e.g., "USB Audio Input – USB-Audio – UAC-232") instead of Auto Mode.</p>
+                            <div class="screenshot-pair">
+                                <div class="screenshot-figure">
+                                    <div class="screenshot-phone-frame">
+                                        <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/Screenshot_2026-10-02-16-48-04-705_com.worldtimecode.world_timecode.jpg" alt="Input device selection menu opened with UAC-232" loading="lazy">
+                                    </div>
+                                    <div class="screenshot-caption">Input menu opened</div>
+                                </div>
+                                <div class="screenshot-figure">
+                                    <div class="screenshot-phone-frame">
+                                        <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/Screenshot_2026-10-02-16-48-13-344_com.worldtimecode.world_timecode.jpg" alt="UAC-232 manually selected showing MANUAL LOCK" loading="lazy">
+                                    </div>
+                                    <div class="screenshot-caption">UAC-232 manually selected</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Check for Manual Lock</h4>
+                            <p>Check that the routing field confirms <strong>MANUAL LOCK</strong> for the selected interface.</p>
+                            <div class="screenshot-figure">
+                                <div class="screenshot-phone-frame">
+                                    <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/Screenshot_2026-10-02-16-48-19-267_com.worldtimecode.world_timecode.jpg" alt="Routing screen confirming MANUAL LOCK" loading="lazy">
+                                </div>
+                                <div class="screenshot-caption">Routing confirmed with MANUAL LOCK</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Find Bit Depth in Settings</h4>
+                            <p>Open <strong>Settings</strong> and find Bit Depth in the recording section. It may still show "16-bit – Aktiv" (16-bit – Active).</p>
+                            <div class="screenshot-figure">
+                                <div class="screenshot-phone-frame">
+                                    <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/Screenshot_2026-10-02-16-48-32-209_com.worldtimecode.world_timecode.jpg" alt="Settings showing Bit Depth as 16-bit Active" loading="lazy">
+                                </div>
+                                <div class="screenshot-caption">Settings showing 16-bit – Active</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h4>Select 24-bit</h4>
+                            <p>Open the Bit Depth menu and select <strong>"24-bit – Unterstützt"</strong> (24-bit – Supported).</p>
+                            <div class="screenshot-pair">
+                                <div class="screenshot-figure">
+                                    <div class="screenshot-phone-frame">
+                                        <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/Screenshot_2026-10-02-16-48-35-727_com.worldtimecode.world_timecode.jpg" alt="Bit depth menu opened showing 24-bit Supported" loading="lazy">
+                                    </div>
+                                    <div class="screenshot-caption">Menu showing 24-bit – Supported</div>
+                                </div>
+                                <div class="screenshot-figure">
+                                    <div class="screenshot-phone-frame">
+                                        <img src="https://raw.githubusercontent.com/Clickybunty/assets/main/Screenshot_2026-10-02-16-48-41-487_com.worldtimecode.world_timecode.jpg" alt="24-bit option selected in the dropdown" loading="lazy">
+                                    </div>
+                                    <div class="screenshot-caption">24-bit option selected</div>
+                                </div>
+                            </div>
+                            <p><em>Note: The final image illustrates the selection inside the dropdown, which is not yet a completed runtime confirmation.</em></p>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h4>Confirm Active Status</h4>
+                            <p>Close the dropdown and check that the selected format is confirmed as <strong>“24-bit – Active”</strong> before recording.</p>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <h4>Arm Channels</h4>
+                            <p>Return to Routing, check the input levels, and arm the channels you want to record.</p>
+                        </div>
+                    </div>
+
+                    <div class="manual-step">
+                        <div class="step-number">9</div>
+                        <div class="step-content">
+                            <h4>Start Recording</h4>
+                            <p>Start and stop the recording using the existing recording controls.</p>
+                        </div>
+                    </div>
+
+                    <h3>Important Operation Notes</h3>
+                    <ul>
+                        <li><strong>Supported vs Active:</strong> “Supported” means the option is offered by the system, whereas “Active” confirms the currently used output format.</li>
+                        <li><strong>Auto Mode:</strong> Auto Mode and Auto USB Select are not a confirmation of an active 24-bit recording. For the 24-bit workflow described above, the interface must be selected manually.</li>
+                        <li><strong>16-bit Fallback:</strong> If Android rejects the requested higher-resolution recording mode, the app displays the fallback to 16-bit. Always check the active format.</li>
+                        <li><strong>Disconnecting USB:</strong> When you disconnect the USB interface, its audio path is terminated. In the tested configuration, the remaining audio input falls back to 16-bit. Not every fallback input on every Android device is strictly limited to 16-bit, but you must manually check the device selection and active format after reconnecting.</li>
+                        <li><strong>Channels:</strong> The number of opened input channels and the number of recorded channels are separate—only armed channels are saved. Two input channels do not automatically represent a fixed Left/Right stereo pair (they are simply CH1, CH2, etc.).</li>
+                        <li><strong>PCM Format:</strong> 24-bit recording over this path uses Integer PCM. Version 1.0.2 does not provide 32-bit float recording.</li>
+                    </ul>
+
+                    <h3>Troubleshooting 24-bit USB Setup</h3>
+                    <ul>
+                        <li><strong>Interface is missing:</strong> Check the connection and use "Rescan Audio Devices".</li>
+                        <li><strong>24-bit is not offered:</strong> Check your manual device selection. 24-bit support depends on both the audio interface and the Android device.</li>
+                        <li><strong>Only “Supported” is shown:</strong> You must select the 24-bit format and wait for the subsequent "Active" status confirmation.</li>
+                        <li><strong>True 16-bit fallback:</strong> If Android rejects the 24-bit request and falls back, continue working with the confirmed 16-bit format. OSRTIME Syncbox TCR does not guarantee universal 24-bit compatibility for every device.</li>
+                    </ul>
+                </section>
+
+                <!-- ═══════════════════════════════════════ -->
                 <!-- NETWORK & SYNC                          -->
                 <!-- ═══════════════════════════════════════ -->
                 <section id="network-sync" class="manual-section">
@@ -587,13 +740,14 @@
 
                     <h3>Audio</h3>
                     <ul>
-                        <li><strong>Auto USB Select</strong> — Automatically switches to a USB audio device when one is connected. Disable this to keep using the built-in microphone even when a USB device is plugged in.</li>
+                        <li><strong>Auto USB Select</strong> — Automatically switches to a USB audio device when one is connected. Disable this to keep using the built-in microphone even when a USB device is plugged in. <em>(Note: Auto USB Select does not enable 24-bit recording. You must explicitly select the interface manually for 24-bit workflows.)</em></li>
                     </ul>
 
                     <h3>Recording</h3>
                     <ul>
                         <li><strong>Recording Folder</strong> — The storage location for recorded BWF files. Tap <span class="ui-label">CHANGE</span> to select a different directory.</li>
                         <li><strong>Sample Rate</strong> — Default: 48.0 kHz. This is the standard broadcast sample rate for professional audio.</li>
+                        <li><strong>Bit Depth</strong> — Configures the audio resolution (16-bit or 24-bit). 24-bit options require explicit manual device selection in Routing.</li>
                     </ul>
                 </section>
 

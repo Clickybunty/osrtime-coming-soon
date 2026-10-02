@@ -219,6 +219,50 @@
         </div>
 
         <div class="notes-content">
+            <h2>1.0.2 — Expanded USB 24-Bit Support & Audio Format Display</h2>
+            <p><em>Submitted for Google Play review.</em></p>
+
+            <h3>What changed?</h3>
+            <p>This update expands 24-bit recording support for tested USB audio interfaces and improves audio level monitoring and the recording format shown in Settings.</p>
+            <p>Some USB interfaces expose audio to Android through a 32-bit integer capture format. OSRTIME Syncbox TCR can now use this capture path and convert the samples to 24-bit PCM for recording.</p>
+
+            <h3>What we fixed</h3>
+            <ul>
+                <li>Expanded 24-bit recording support for tested USB audio interfaces, including the Behringer UMC204HD and Zoom UAC-232.</li>
+                <li>Corrected audio level calculations when capturing audio through Android’s 32-bit integer format.</li>
+                <li>Corrected the active format display in Settings to reflect the audio output format used by the app.</li>
+                <li>Removed the misleading “fallen back to 32-bit” message when the app is correctly producing 24-bit PCM.</li>
+                <li>Preserved the existing USB detection safeguards and 16-bit fallback when Android rejects a requested higher-resolution recording mode.</li>
+            </ul>
+
+            <h3>About 24-bit recording through a 32-bit capture format</h3>
+            <p>The format Android uses to capture audio does not always match the format saved in the recording.</p>
+            <p>For compatible devices, OSRTIME Syncbox TCR can capture 32-bit integer samples and convert them to 24-bit PCM. In this case, Settings correctly shows 24-bit as active. This is a planned format conversion, rather than a fallback to 32-bit recording.</p>
+            <p>This path uses integer PCM and does not provide 32-bit float recording.</p>
+
+            <h3>Tested during this development cycle</h3>
+            <p>Manual testing on a Xiaomi Redmi Note 11 included:</p>
+            <ul>
+                <li>Behringer UMC204HD</li>
+                <li>Zoom UAC-232</li>
+                <li>DJI Mic 3</li>
+                <li>USB-C to 3.5 mm audio adapters</li>
+                <li>Creative Sound Blaster Play! 3</li>
+                <li>Wired 3.5 mm microphone input</li>
+            </ul>
+            <p>The supported recording format depends on the connected device and the format Android makes available. The wired 3.5 mm input was tested at 16 bit.</p>
+            <p>Additional checks confirmed 24-bit PCM WAV files containing 1, 2, 3 and 4 recorded channels, matching the selected recording channels. Multichannel recording remains an existing feature.</p>
+
+            <h3>Compatibility notes</h3>
+            <p>Support has been verified for the tested configurations. This does not guarantee 24-bit compatibility with every USB audio interface or Android device.</p>
+            <p>A 24-bit file describes the stored digital sample format. The effective resolution and dynamic range also depend on the connected hardware and Android’s audio path.</p>
+            <p>32-bit float recording is not included in this update.</p>
+
+            <h3>Beta testing continues</h3>
+            <p>Thank you to everyone contributing device tests and feedback. If you encounter unexpected behaviour, please let us know which Android device and audio interface you used, which recording format you selected, and what happened.</p>
+        </div>
+
+        <div class="notes-content">
             <h2>1.0.1 — Audio Routing & 24-Bit Stability Update</h2>
 
             <h3>What changed?</h3>
