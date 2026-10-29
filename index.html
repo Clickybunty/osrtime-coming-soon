@@ -570,6 +570,263 @@
             color: var(--accent-cool);
         }
 
+        /* ── DOWNLOAD SECTION (#download) ── */
+        .download-section {
+            width: 100%;
+            max-width: 860px;
+            margin-bottom: 64px;
+            scroll-margin-top: 96px;
+            animation: fadeIn 0.8s ease-out 0.95s both;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--border-subtle);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .download-card {
+            background: var(--surface-1);
+            padding: 28px 24px 26px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+        }
+        .download-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 13px;
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+        .download-pill.android {
+            color: var(--accent-cool);
+            background: rgba(128, 203, 196, 0.08);
+            border: 1px solid rgba(128, 203, 196, 0.32);
+        }
+        .download-pill.ios {
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-medium);
+        }
+        .download-pill-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .download-pill.android .download-pill-dot {
+            background: var(--nav-selected);
+        }
+        .download-pill.ios .download-pill-dot {
+            background: var(--text-secondary);
+        }
+        .download-card .cta-badge {
+            width: 100%;
+            max-width: 350px;
+            justify-content: center;
+            padding: 15px 20px;
+        }
+        .download-card .cta-badge-store {
+            font-size: 15px;
+        }
+        .download-card-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.55;
+            max-width: 340px;
+        }
+        .download-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 11.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .download-fallback code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            color: var(--text-primary);
+            background: var(--surface-2);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            padding: 2px 7px;
+            user-select: all;
+        }
+        .inline-copy-btn,
+        .inline-modal-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-cool);
+            background: rgba(128, 203, 196, 0.08);
+            border: 1px solid rgba(128, 203, 196, 0.32);
+            border-radius: 4px;
+            padding: 2px 9px;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .inline-copy-btn:hover,
+        .inline-modal-btn:hover {
+            background: rgba(128, 203, 196, 0.16);
+            border-color: var(--accent-cool);
+            color: var(--text-primary);
+        }
+        .inline-modal-btn {
+            color: var(--text-secondary);
+            background: transparent;
+            border-color: var(--border-medium);
+        }
+
+        /* ── iOS WAITLIST FALLBACK MODAL ── */
+        #ios-waitlist-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        #ios-waitlist-modal.open {
+            display: flex;
+        }
+        .waitlist-modal-inner {
+            background: var(--surface-1);
+            border: 1px solid var(--border-medium);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 520px;
+            padding: 32px;
+            position: relative;
+            text-align: left;
+            animation: fadeSlideUp 0.25s ease-out forwards;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+        }
+        .waitlist-modal-close {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 26px;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+        .waitlist-modal-close:hover {
+            color: var(--text-primary);
+        }
+        .waitlist-modal-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        .waitlist-modal-desc {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+        .waitlist-modal-box {
+            background: var(--page-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .waitlist-modal-box strong {
+            color: var(--text-secondary);
+        }
+        .waitlist-modal-email {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            user-select: all;
+        }
+        .waitlist-modal-pre {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border-subtle);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            line-height: 1.5;
+            user-select: all;
+        }
+        .waitlist-modal-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .waitlist-btn-primary,
+        .waitlist-btn-secondary {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            padding: 11px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .waitlist-btn-primary {
+            background: var(--accent-cool);
+            border: 1px solid var(--accent-cool);
+            color: #0C0D0F;
+            font-weight: 700;
+        }
+        .waitlist-btn-primary:hover {
+            background: #a5d6d3;
+            border-color: #a5d6d3;
+        }
+        .waitlist-btn-secondary {
+            background: var(--surface-2);
+            border: 1px solid var(--border-medium);
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .waitlist-btn-secondary:hover {
+            border-color: var(--accent-cool);
+            color: var(--accent-cool);
+        }
+        .waitlist-modal-foot {
+            margin-top: 14px;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            line-height: 1.5;
+        }
+        .waitlist-modal-foot a {
+            color: var(--text-secondary);
+            text-decoration: underline;
+        }
+
         /* ── SPECS ROW ── */
         .specs-section {
             width: 100%;
@@ -683,6 +940,9 @@
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
             .specs-row { flex-wrap: wrap; padding: 16px 0; }
             .spec-item { min-width: 33%; padding: 8px 0; }
             .spec-item::after { display: none; }
@@ -692,6 +952,11 @@
             .page-wrapper { padding: 100px 16px 32px; }
             .cta-pair { flex-direction: column; align-items: center; gap: 12px; width: 100%; }
             .cta-badge { width: 100%; max-width: 310px; min-width: 0; padding: 14px 22px; }
+            .download-card { padding: 24px 18px 22px; }
+            .download-card .cta-badge { max-width: 310px; padding: 14px 18px; }
+            .download-card .cta-badge-store { font-size: 14px; }
+            .waitlist-modal-inner { padding: 24px 18px; }
+            .waitlist-modal-actions { grid-template-columns: 1fr; }
             .clock-labels span { font-size: 12px; }
             .source-btn { font-size: 8px; height: 22px; }
             .clock-actions { gap: 4px; }
@@ -719,7 +984,7 @@
                 <a href="knowledge/" class="global-nav-link">Knowledge</a>
                 <a href="manual/" class="global-nav-link">Manual</a>
                 <a href="release-notes/" class="global-nav-link">Release Notes</a>
-                <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="global-nav-link store-link" aria-label="Get OSRTIME Sync-Box TCR on Google Play"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/><path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/><path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/><path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/></svg>Google Play</a>
+                <a href="#download" class="global-nav-link store-link" aria-label="Jump to Download section"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download</a>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -730,7 +995,7 @@
             <a href="knowledge/" class="global-nav-link">Knowledge</a>
             <a href="manual/" class="global-nav-link">Manual</a>
             <a href="release-notes/" class="global-nav-link">Release Notes</a>
-            <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="global-nav-link store-link" aria-label="Get OSRTIME Sync-Box TCR on Google Play"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/><path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/><path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/><path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/></svg>Google Play</a>
+            <a href="#download" class="global-nav-link store-link" aria-label="Jump to Download section"><svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download</a>
         </div>
     </header>
 
@@ -744,7 +1009,7 @@
 
         <div style="width: 100%; margin-bottom: 34px; text-align: center; animation: fadeIn 0.8s ease-out 0.25s both;">
             <div class="cta-pair">
-                <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="cta-badge cta-android" aria-label="Get OSRTIME Sync-Box TCR on Google Play – Available now">
+                <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="cta-badge cta-android" aria-label="Android Available Now – Get OSRTIME Sync-Box TCR on Google Play">
                     <svg class="cta-badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/>
                         <path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/>
@@ -752,16 +1017,16 @@
                         <path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/>
                     </svg>
                     <div class="cta-badge-text">
-                        <div class="cta-badge-label">Available now</div>
+                        <div class="cta-badge-label">Available Now</div>
                         <div class="cta-badge-store">Get it on Google Play</div>
                     </div>
                 </a>
-                <a href="mailto:apple@osrtime.com?subject=OSRTIME%20iOS%20Waitlist%20%E2%80%93%20Notification%20Request&amp;body=Hello%20OSRTIME%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20join%20the%20OSRTIME%20iOS%20notification%20list%20and%20receive%20an%20email%20if%20OSRTIME%20Sync-Box%20TCR%20becomes%20available%20for%20iOS.%0D%0A%0D%0AI%20understand%20that%20an%20iOS%20release%20has%20not%20yet%20been%20confirmed.%0D%0A%0D%0ABest%20regards" class="cta-badge cta-ios" aria-label="Join iOS Waitlist – iOS not yet available, request email notification">
+                <a href="mailto:apple@osrtime.com?subject=OSRTIME%20iOS%20Waitlist%20%E2%80%93%20Registration%20Request&amp;body=Hello%20OSRTIME%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20join%20the%20OSRTIME%20iOS%20Waitlist%20and%20receive%20an%20email%20notification%20when%20the%20iOS%20version%20becomes%20available.%0D%0A%0D%0APlease%20add%20my%20email%20address%20to%20the%20notification%20list.%0D%0A%0D%0ABest%20regards" class="cta-badge cta-ios js-ios-waitlist" aria-label="Join iOS Waitlist – Coming Soon, opens prefilled email to apple@osrtime.com">
                     <svg class="cta-badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM15.96 6.32c.67-.81 1.12-1.94 1-3.07-.96.04-2.13.64-2.82 1.45-.61.7-1.15 1.85-.99 2.95 1.08.08 2.14-.52 2.81-1.33z" fill="#E8EAED"/>
                     </svg>
                     <div class="cta-badge-text">
-                        <div class="cta-badge-label"><span style="text-transform: none;">iOS</span> &ndash; Not yet available</div>
+                        <div class="cta-badge-label">Join the Waitlist &ndash; Coming Soon</div>
                         <div class="cta-badge-store">Join iOS Waitlist</div>
                     </div>
                 </a>
@@ -951,35 +1216,57 @@
             </div>
         </div>
 
-        <!-- Platform Availability: Android Download & iOS Notification List -->
-        <div class="cta-section" id="platform-availability">
-            <div class="cta-pair">
-                <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="cta-badge cta-android" aria-label="Get OSRTIME Sync-Box TCR on Google Play – Available now">
-                    <svg class="cta-badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/>
-                        <path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/>
-                        <path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/>
-                        <path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/>
-                    </svg>
-                    <div class="cta-badge-text">
-                        <div class="cta-badge-label">Available now</div>
-                        <div class="cta-badge-store">Get it on Google Play</div>
+        <!-- Download & Platform Availability (#download) -->
+        <section class="download-section" id="download" aria-labelledby="download-heading">
+            <div class="features-label" id="download-heading">Download</div>
+            <div class="download-grid">
+                <div class="download-card">
+                    <div class="download-pill android">
+                        <span class="download-pill-dot"></span>
+                        Android &middot; Available Now
                     </div>
-                </a>
-                <a href="mailto:apple@osrtime.com?subject=OSRTIME%20iOS%20Waitlist%20%E2%80%93%20Notification%20Request&amp;body=Hello%20OSRTIME%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20join%20the%20OSRTIME%20iOS%20notification%20list%20and%20receive%20an%20email%20if%20OSRTIME%20Sync-Box%20TCR%20becomes%20available%20for%20iOS.%0D%0A%0D%0AI%20understand%20that%20an%20iOS%20release%20has%20not%20yet%20been%20confirmed.%0D%0A%0D%0ABest%20regards" class="cta-badge cta-ios" aria-label="Join iOS Waitlist – iOS not yet available, request email notification">
-                    <svg class="cta-badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM15.96 6.32c.67-.81 1.12-1.94 1-3.07-.96.04-2.13.64-2.82 1.45-.61.7-1.15 1.85-.99 2.95 1.08.08 2.14-.52 2.81-1.33z" fill="#E8EAED"/>
-                    </svg>
-                    <div class="cta-badge-text">
-                        <div class="cta-badge-label"><span style="text-transform: none;">iOS</span> &ndash; Not yet available</div>
-                        <div class="cta-badge-store">Join iOS Waitlist</div>
+                    <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="cta-badge cta-android" aria-label="Android – Download on Google Play (Available Now)">
+                        <svg class="cta-badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/>
+                            <path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/>
+                            <path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/>
+                            <path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/>
+                        </svg>
+                        <div class="cta-badge-text">
+                            <div class="cta-badge-label">Available Now</div>
+                            <div class="cta-badge-store">Android &ndash; Download on Google Play</div>
+                        </div>
+                    </a>
+                    <div class="download-card-note">
+                        OSRTIME Sync-Box TCR is publicly available for Android smartphones and tablets on Google Play.
                     </div>
-                </a>
+                </div>
+                <div class="download-card">
+                    <div class="download-pill ios">
+                        <span class="download-pill-dot"></span>
+                        <span style="text-transform: none;">iOS</span> &middot; Join the Waitlist &ndash; Coming Soon
+                    </div>
+                    <a href="mailto:apple@osrtime.com?subject=OSRTIME%20iOS%20Waitlist%20%E2%80%93%20Registration%20Request&amp;body=Hello%20OSRTIME%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20join%20the%20OSRTIME%20iOS%20Waitlist%20and%20receive%20an%20email%20notification%20when%20the%20iOS%20version%20becomes%20available.%0D%0A%0D%0APlease%20add%20my%20email%20address%20to%20the%20notification%20list.%0D%0A%0D%0ABest%20regards" class="cta-badge cta-ios js-ios-waitlist" aria-label="iOS – Join Waitlist (Coming Soon, opens prefilled email to apple@osrtime.com)">
+                        <svg class="cta-badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM15.96 6.32c.67-.81 1.12-1.94 1-3.07-.96.04-2.13.64-2.82 1.45-.61.7-1.15 1.85-.99 2.95 1.08.08 2.14-.52 2.81-1.33z" fill="#E8EAED"/>
+                        </svg>
+                        <div class="cta-badge-text">
+                            <div class="cta-badge-label">Join the Waitlist &ndash; Coming Soon</div>
+                            <div class="cta-badge-store">iOS &ndash; Join Waitlist</div>
+                        </div>
+                    </a>
+                    <div class="download-fallback">
+                        <span>No email app?</span>
+                        <code>apple@osrtime.com</code>
+                        <button type="button" class="inline-copy-btn" data-copy-text="apple@osrtime.com" aria-label="Copy apple@osrtime.com">Copy</button>
+                        <button type="button" class="inline-modal-btn" id="btn-open-waitlist-helper">Message &amp; Webmail</button>
+                    </div>
+                </div>
             </div>
-            <div class="cta-subnote">
-                iOS Waitlist opens a prefilled email to <code>apple@osrtime.com</code> in your mail app &mdash; sent by you, with no confirmed iOS release date. Unsubscribe anytime via email. <a href="beta/#ios-waitlist">Webmail &amp; Details</a> &middot; <a href="privacy/#ios-waitlist">Privacy Policy</a>
+            <div class="cta-subnote" style="text-align: center;">
+                iOS is not yet available. Clicking <strong>iOS &ndash; Join Waitlist</strong> opens a prefilled email to <code>apple@osrtime.com</code> in your default mail program &mdash; you simply press Send. Unsubscribe anytime via email. <a href="privacy/#ios-waitlist">Privacy Policy</a>
             </div>
-        </div>
+        </section>
 
         <!-- YouTube -->
         <div class="contact-section" style="margin-bottom: 56px;">
@@ -996,7 +1283,7 @@
 
         <!-- Secondary Navigation -->
         <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; animation: fadeIn 0.8s ease-out 1.05s both;">
-            <a href="beta/#ios-waitlist" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;"><span style="text-transform: none;">iOS</span> Waitlist</a>
+            <a href="mailto:apple@osrtime.com?subject=OSRTIME%20iOS%20Waitlist%20%E2%80%93%20Registration%20Request&amp;body=Hello%20OSRTIME%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20join%20the%20OSRTIME%20iOS%20Waitlist%20and%20receive%20an%20email%20notification%20when%20the%20iOS%20version%20becomes%20available.%0D%0A%0D%0APlease%20add%20my%20email%20address%20to%20the%20notification%20list.%0D%0A%0D%0ABest%20regards" class="contact-link js-ios-waitlist" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;"><span style="text-transform: none;">iOS</span> Waitlist</a>
             <a href="/release-notes/" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">Release Notes</a>
             <a href="/privacy/" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">Privacy</a>
             <a href="https://mein.online-impressum.de/hardwarestream/" target="_blank" rel="noopener noreferrer" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">Impressum</a>
@@ -1231,6 +1518,140 @@
 
     })();
     </script>
+    <!-- ═══════════════════════════════════════════
+         iOS WAITLIST FALLBACK MODAL
+         ═══════════════════════════════════════════ -->
+    <div id="ios-waitlist-modal" role="dialog" aria-modal="true" aria-labelledby="ios-waitlist-modal-title">
+        <div class="waitlist-modal-inner">
+            <button type="button" class="waitlist-modal-close" id="btn-close-waitlist-modal" aria-label="Close dialog">&times;</button>
+            <div class="waitlist-modal-title" id="ios-waitlist-modal-title">OSRTIME iOS Waitlist</div>
+            <p class="waitlist-modal-desc">
+                Your configured email program should open with a prefilled waitlist request. If no email app opened on this device, copy the address and text below or open Gmail in your browser:
+            </p>
+            <div class="waitlist-modal-box">
+                <div><strong>To:</strong> <span class="waitlist-modal-email">apple@osrtime.com</span></div>
+                <div><strong>Subject:</strong> OSRTIME iOS Waitlist &ndash; Registration Request</div>
+                <div class="waitlist-modal-pre">Hello OSRTIME Team,
+
+I would like to join the OSRTIME iOS Waitlist and receive an email notification when the iOS version becomes available.
+
+Please add my email address to the notification list.
+
+Best regards</div>
+            </div>
+            <div class="waitlist-modal-actions">
+                <button type="button" class="waitlist-btn-primary" id="btn-modal-copy-email" data-copy-text="apple@osrtime.com">Copy Email Address</button>
+                <button type="button" class="waitlist-btn-secondary" id="btn-modal-copy-msg">Copy Subject &amp; Text</button>
+                <a href="mailto:apple@osrtime.com?subject=OSRTIME%20iOS%20Waitlist%20%E2%80%93%20Registration%20Request&amp;body=Hello%20OSRTIME%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20join%20the%20OSRTIME%20iOS%20Waitlist%20and%20receive%20an%20email%20notification%20when%20the%20iOS%20version%20becomes%20available.%0D%0A%0D%0APlease%20add%20my%20email%20address%20to%20the%20notification%20list.%0D%0A%0D%0ABest%20regards" class="waitlist-btn-secondary">Open Email App</a>
+                <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=apple@osrtime.com&amp;su=OSRTIME%20iOS%20Waitlist%20%E2%80%93%20Registration%20Request&amp;body=Hello%20OSRTIME%20Team%2C%0A%0AI%20would%20like%20to%20join%20the%20OSRTIME%20iOS%20Waitlist%20and%20receive%20an%20email%20notification%20when%20the%20iOS%20version%20becomes%20available.%0A%0APlease%20add%20my%20email%20address%20to%20the%20notification%20list.%0A%0ABest%20regards" target="_blank" rel="noopener noreferrer" class="waitlist-btn-secondary">Open in Gmail</a>
+            </div>
+            <div class="waitlist-modal-foot">
+                Nothing is sent automatically by this website &mdash; your email is only sent when you submit it in your mail client. <a href="privacy/#ios-waitlist">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+
     <script src="assets/js/global-header.js"></script>
+    <script>
+    (function () {
+        'use strict';
+        const modal = document.getElementById('ios-waitlist-modal');
+        const btnClose = document.getElementById('btn-close-waitlist-modal');
+        const btnHelper = document.getElementById('btn-open-waitlist-helper');
+        const btnCopyMsg = document.getElementById('btn-modal-copy-msg');
+
+        const FULL_TEMPLATE =
+            'Subject: OSRTIME iOS Waitlist – Registration Request\r\n\r\n' +
+            'Hello OSRTIME Team,\r\n\r\n' +
+            'I would like to join the OSRTIME iOS Waitlist and receive an email notification when the iOS version becomes available.\r\n\r\n' +
+            'Please add my email address to the notification list.\r\n\r\n' +
+            'Best regards';
+
+        function openModal() {
+            if (!modal) return;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            if (!modal) return;
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function copyWithFeedback(btn, text) {
+            function markDone() {
+                const orig = btn.getAttribute('data-orig-label') || btn.textContent;
+                btn.setAttribute('data-orig-label', orig);
+                btn.textContent = 'Copied!';
+                setTimeout(function () {
+                    btn.textContent = orig;
+                }, 2000);
+            }
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(markDone).catch(function () {
+                    fallbackCopy(text, markDone);
+                });
+            } else {
+                fallbackCopy(text, markDone);
+            }
+        }
+
+        function fallbackCopy(text, cb) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); if (cb) cb(); } catch (e) {}
+            document.body.removeChild(ta);
+        }
+
+        document.querySelectorAll('.js-ios-waitlist').forEach(function (link) {
+            link.addEventListener('auxclick', function (e) {
+                if (e.button === 1) {
+                    e.preventDefault();
+                    openModal();
+                }
+            });
+            link.addEventListener('click', function (e) {
+                if (e.ctrlKey || e.metaKey || e.shiftKey) {
+                    e.preventDefault();
+                    window.location.href = link.href;
+                }
+                setTimeout(openModal, 120);
+            });
+        });
+
+        if (btnHelper) btnHelper.addEventListener('click', openModal);
+        if (btnClose) btnClose.addEventListener('click', closeModal);
+
+        if (modal) {
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) closeModal();
+            });
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
+
+        document.querySelectorAll('[data-copy-text]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                copyWithFeedback(btn, btn.getAttribute('data-copy-text'));
+            });
+        });
+
+        if (btnCopyMsg) {
+            btnCopyMsg.addEventListener('click', function () {
+                copyWithFeedback(btnCopyMsg, FULL_TEMPLATE);
+            });
+        }
+    })();
+    </script>
 </body>
 </html>
