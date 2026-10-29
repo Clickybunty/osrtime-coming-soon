@@ -487,19 +487,29 @@
             align-items: center;
             gap: 12px;
             background: var(--surface-2);
-            border: 1px solid var(--border-medium);
+            border: 1px solid rgba(128, 203, 196, 0.38);
             border-radius: 10px;
             padding: 14px 28px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
         }
         .cta-badge:hover {
             background: var(--surface-3);
+            border-color: var(--accent-cool);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6), 0 0 18px rgba(128, 203, 196, 0.12);
+        }
+        .cta-badge:focus-visible {
+            outline: 2px solid var(--accent-cool);
+            outline-offset: 3px;
             border-color: var(--accent-cool);
         }
         .cta-badge-icon {
             width: 28px;
             height: 28px;
+            flex-shrink: 0;
         }
         .cta-badge-text {
             text-align: left;
@@ -669,7 +679,7 @@
                 <a href="knowledge/" class="global-nav-link">Knowledge</a>
                 <a href="manual/" class="global-nav-link">Manual</a>
                 <a href="release-notes/" class="global-nav-link">Release Notes</a>
-                <a href="beta/" class="global-nav-link beta-link">Beta</a>
+                <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="global-nav-link store-link" aria-label="Get OSRTIME Sync-Box TCR on Google Play"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/><path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/><path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/><path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/></svg>Google Play</a>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -680,7 +690,7 @@
             <a href="knowledge/" class="global-nav-link">Knowledge</a>
             <a href="manual/" class="global-nav-link">Manual</a>
             <a href="release-notes/" class="global-nav-link">Release Notes</a>
-            <a href="beta/" class="global-nav-link beta-link">Beta</a>
+            <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="global-nav-link store-link" aria-label="Get OSRTIME Sync-Box TCR on Google Play"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/><path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/><path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/><path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/></svg>Google Play</a>
         </div>
     </header>
 
@@ -689,12 +699,21 @@
         <!-- Status Badge -->
         <div class="status-badge" id="status-badge" style="margin-bottom: 16px;">
             <div class="status-dot"></div>
-            IN DEVELOPMENT
+            AVAILABLE FOR ANDROID
         </div>
 
         <div style="margin-bottom: 36px; animation: fadeIn 0.8s ease-out 0.25s both;">
-            <a href="/beta" class="cta-badge" style="padding: 8px 16px; border-color: var(--accent-cool); background: transparent;">
-                <span class="cta-badge-store" style="font-size: 11px; color: var(--accent-cool); text-transform: uppercase; letter-spacing: 2px;">Join Beta</span>
+            <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="cta-badge" aria-label="Get OSRTIME Sync-Box TCR on Google Play">
+                <svg class="cta-badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/>
+                    <path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/>
+                    <path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/>
+                    <path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/>
+                </svg>
+                <div class="cta-badge-text">
+                    <div class="cta-badge-label">Get it on</div>
+                    <div class="cta-badge-store">Google Play</div>
+                </div>
             </a>
         </div>
 
@@ -780,7 +799,7 @@
         <!-- Brand Tagline -->
         <div class="brand-tagline">
             <div class="brand-tagline-text">
-                <span>OSRTIME</span> &mdash; Coming Soon
+                <span>OSRTIME</span> SYNC-BOX TCR &mdash; FOR ANDROID
             </div>
         </div>
 
@@ -883,18 +902,18 @@
 
         <!-- Google Play Store CTA -->
         <div class="cta-section">
-            <div class="cta-badge">
-                <svg class="cta-badge-icon" viewBox="0 0 24 24" fill="none">
+            <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="cta-badge" aria-label="Get OSRTIME Sync-Box TCR on Google Play">
+                <svg class="cta-badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/>
                     <path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/>
                     <path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/>
                     <path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/>
                 </svg>
                 <div class="cta-badge-text">
-                    <div class="cta-badge-label">Coming Soon on</div>
+                    <div class="cta-badge-label">Get it on</div>
                     <div class="cta-badge-store">Google Play</div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- YouTube -->
@@ -912,7 +931,7 @@
 
         <!-- Secondary Navigation -->
         <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; animation: fadeIn 0.8s ease-out 1.05s both;">
-            <a href="/beta/" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">Beta Program</a>
+            <a href="beta/#ios-waitlist" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">iOS Waitlist</a>
             <a href="/release-notes/" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">Release Notes</a>
             <a href="/privacy/" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">Privacy</a>
             <a href="https://mein.online-impressum.de/hardwarestream/" target="_blank" rel="noopener noreferrer" class="contact-link" style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; text-decoration: none;">Impressum</a>

@@ -611,11 +611,13 @@ body {
 .product-ctas {
     display: flex;
     gap: 16px;
+    flex-wrap: wrap;
 }
 .product-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
@@ -623,13 +625,18 @@ body {
     border-radius: 8px;
     transition: all 0.2s ease;
 }
+.product-cta:focus-visible {
+    outline: 2px solid var(--accent-cool);
+    outline-offset: 3px;
+}
 .product-cta.primary {
     background: var(--surface-2);
     border: 1px solid var(--accent-cool);
     color: var(--accent-cool);
 }
 .product-cta.primary:hover {
-    background: rgba(128, 203, 196, 0.1);
+    background: rgba(128, 203, 196, 0.14);
+    color: var(--text-primary);
 }
 .product-cta.secondary {
     background: transparent;
@@ -645,6 +652,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.product-phone-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+.product-phone-frame {
+    width: 185px;
+    background: #0F1012;
+    border-radius: 22px;
+    padding: 7px;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.09),
+        0 14px 36px rgba(0, 0, 0, 0.65);
+}
+.product-phone-frame.secondary-phone {
+    transform: translateY(12px);
+}
+.product-phone-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
 }
 .product-mockup {
     max-width: 100%;
@@ -667,5 +698,21 @@ body {
 @media (max-width: 600px) {
     .product-ctas {
         flex-direction: column;
+    }
+    .product-phone-frame {
+        width: 145px;
+        border-radius: 18px;
+        padding: 5px;
+    }
+    .product-phone-frame img {
+        border-radius: 13px;
+    }
+}
+@media (max-width: 380px) {
+    .product-phone-frame.secondary-phone {
+        display: none;
+    }
+    .product-phone-frame {
+        width: 200px;
     }
 }

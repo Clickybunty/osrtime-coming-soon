@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>OSRTIME Sync-Box TCR – Android Beta</title>
-    <meta name="description" content="OSRTIME Sync-Box TCR is in Android Beta. Professional timecode generation, LTC, network synchronization and BWF recording for film and production sound on Android.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download OSRTIME Sync-Box TCR – Android &amp; iOS Waitlist</title>
+    <meta name="description" content="Download OSRTIME Sync-Box TCR for Android on Google Play, or register non-binding interest in a potential future iOS version.">
     <meta name="theme-color" content="#0C0D0F">
 
     <link rel="icon" type="image/png" href="https://github.com/Clickybunty/assets/blob/main/osertime-logo-google-workspace.png?raw=true">
@@ -17,7 +17,7 @@
 
     <style>
         /* ══════════════════════════════════════════════════
-           OSRTIME BETA PAGE
+           OSRTIME DOWNLOAD & PLATFORM PAGE (/beta/)
            ══════════════════════════════════════════════════ */
 
         *, *::before, *::after {
@@ -67,18 +67,18 @@
         }
 
         /* ── LAYOUT ── */
-        .beta-page {
-            padding-top: 80px; /* space for global header */
+        .download-page {
+            padding-top: 80px;
         }
 
         /* ══════════════════════════════════════════════════
-           HERO SECTION
+           ANDROID HERO SECTION (AVAILABLE PRODUCT)
            ══════════════════════════════════════════════════ */
         .hero {
-            min-height: 90vh;
+            min-height: 82vh;
             display: flex;
             align-items: center;
-            padding: 60px 24px 80px;
+            padding: 64px 24px 80px;
             position: relative;
             overflow: hidden;
         }
@@ -88,7 +88,7 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse 60% 50% at 70% 50%, rgba(128, 203, 196, 0.05) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 70% 50%, rgba(128, 203, 196, 0.06) 0%, transparent 70%),
                 radial-gradient(ellipse 40% 60% at 30% 40%, rgba(105, 240, 174, 0.03) 0%, transparent 60%);
             pointer-events: none;
         }
@@ -98,14 +98,13 @@
             margin: 0 auto;
             width: 100%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.08fr 0.92fr;
             gap: 64px;
             align-items: center;
             position: relative;
             z-index: 1;
         }
 
-        /* Left column */
         .hero-copy {
             animation: fadeIn 0.9s ease-out both;
         }
@@ -114,27 +113,31 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            background: rgba(128, 203, 196, 0.08);
+            border: 1px solid rgba(128, 203, 196, 0.30);
+            border-radius: 100px;
+            padding: 7px 16px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 2.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--accent-cool);
             margin-bottom: 28px;
         }
 
         .hero-eyebrow-dot {
-            width: 6px; height: 6px;
-            background: var(--accent-cool);
+            width: 7px; height: 7px;
+            background: var(--accent-green);
             border-radius: 50%;
             animation: statusPulse 3s ease-in-out infinite;
         }
 
         .hero-headline {
-            font-size: clamp(36px, 4.5vw, 58px);
+            font-size: clamp(34px, 4.4vw, 54px);
             font-weight: 800;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
+            letter-spacing: -1.4px;
+            line-height: 1.12;
             color: var(--text-primary);
             margin-bottom: 24px;
         }
@@ -149,8 +152,8 @@
             font-weight: 400;
             line-height: 1.65;
             color: var(--text-secondary);
-            max-width: 480px;
-            margin-bottom: 40px;
+            max-width: 520px;
+            margin-bottom: 36px;
         }
 
         /* CTA group */
@@ -161,58 +164,98 @@
             align-items: center;
         }
 
-        .btn-primary {
+        .store-cta-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            background: var(--accent-cool);
-            color: #0C0D0F;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            border-radius: 8px;
+            gap: 14px;
+            padding: 13px 26px;
+            background: var(--surface-2);
+            border: 1px solid var(--accent-cool);
+            border-radius: 10px;
             text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s ease, transform 0.15s ease;
+            color: var(--text-primary);
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5), 0 0 20px rgba(128, 203, 196, 0.12);
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
         }
-        .btn-primary:hover {
-            background: #a5d6d3;
+        .store-cta-btn:hover {
+            background: var(--surface-3);
             transform: translateY(-1px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), 0 0 24px rgba(128, 203, 196, 0.2);
         }
-        .btn-primary:active { transform: translateY(0); }
+        .store-cta-btn:focus-visible {
+            outline: 2px solid var(--accent-cool);
+            outline-offset: 3px;
+        }
+        .store-cta-icon {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+        .store-cta-copy {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .store-cta-overline {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent-cool);
+            line-height: 1.1;
+            margin-bottom: 2px;
+        }
+        .store-cta-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
 
         .btn-secondary {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            padding: 13px 24px;
+            padding: 15px 24px;
             background: transparent;
             color: var(--text-secondary);
             font-family: 'Inter', sans-serif;
             font-size: 14px;
-            font-weight: 500;
-            border-radius: 8px;
+            font-weight: 600;
+            border-radius: 10px;
             text-decoration: none;
             border: 1px solid var(--border-medium);
             cursor: pointer;
-            transition: color 0.2s ease, border-color 0.2s ease;
+            transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
         }
         .btn-secondary:hover {
             color: var(--text-primary);
-            border-color: rgba(255,255,255,0.25);
+            background: var(--surface-1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        .btn-secondary:focus-visible {
+            outline: 2px solid var(--accent-cool);
+            outline-offset: 3px;
         }
 
-        .hero-disclaimer {
-            margin-top: 20px;
-            font-size: 12px;
+        .hero-platform-note {
+            margin-top: 22px;
+            font-size: 13px;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+        .hero-platform-note a {
+            color: var(--text-secondary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+        .hero-platform-note a:hover {
+            color: var(--accent-cool);
         }
 
-        /* Right column – App Visual */
+        /* Right column – Authentic Android Phone Showcase */
         .hero-visual {
             display: flex;
             justify-content: center;
@@ -220,19 +263,35 @@
             animation: fadeSlideUp 1s ease-out 0.2s both;
         }
 
-        .hero-product-img {
-            width: 100%;
-            max-width: 560px;
-            border-radius: 12px;
-            display: block;
+        .phone-showcase {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .phone-frame {
+            width: 220px;
+            background: #101114;
+            border-radius: 26px;
+            padding: 8px;
             box-shadow:
-                0 0 0 1px rgba(255,255,255,0.06),
-                0 24px 64px rgba(0,0,0,0.7),
-                0 8px 24px rgba(0,0,0,0.4);
+                0 0 0 1px rgba(255, 255, 255, 0.09),
+                0 24px 60px rgba(0, 0, 0, 0.75),
+                0 8px 20px rgba(0, 0, 0, 0.45);
+        }
+        .phone-frame.offset-phone {
+            transform: translateY(18px);
+        }
+        .phone-frame img {
+            width: 100%;
+            height: auto;
+            border-radius: 19px;
+            display: block;
         }
 
         /* ══════════════════════════════════════════════════
-           WHAT YOU'RE TESTING – CAPABILITIES
+           ANDROID CAPABILITIES
            ══════════════════════════════════════════════════ */
         .section {
             padding: 80px 24px;
@@ -262,11 +321,10 @@
             font-size: 16px;
             color: var(--text-secondary);
             line-height: 1.6;
-            max-width: 600px;
+            max-width: 620px;
             margin-bottom: 48px;
         }
 
-        /* Capabilities grid */
         .cap-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -282,7 +340,6 @@
             padding: 28px 24px;
             transition: background 0.25s ease;
         }
-
         .cap-card:hover { background: var(--surface-2); }
 
         .cap-icon {
@@ -317,100 +374,69 @@
         .cap-link::after { content: ' →'; }
 
         /* ══════════════════════════════════════════════════
-           HOW TO JOIN – STEP FLOW
+           iOS WAITLIST SECTION (FUTURE OPTION – SUBDUED)
            ══════════════════════════════════════════════════ */
-        .section-alt {
+        .ios-band {
             background: var(--surface-1);
             border-top: 1px solid var(--border-subtle);
             border-bottom: 1px solid var(--border-subtle);
+            scroll-margin-top: 72px;
         }
 
-        .section-alt .section { padding: 80px 24px; }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-            position: relative;
-        }
-
-        /* Connector line */
-        .steps-grid::after {
-            content: '';
-            position: absolute;
-            top: 24px;
-            left: calc(12.5% + 16px);
-            right: calc(12.5% + 16px);
-            height: 1px;
-            background: var(--border-medium);
-            z-index: 0;
-        }
-
-        .step-item {
-            padding: 0 16px;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--surface-2);
-            border: 1px solid var(--border-medium);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--accent-cool);
-            margin: 0 auto 20px;
-        }
-
-        .step-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .step-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* ══════════════════════════════════════════════════
-           JOIN SECTION – SIGNUP CTA
-           ══════════════════════════════════════════════════ */
-        /* This container is isolated for future Firebase form replacement */
-        .join-section {
+        .ios-section {
             padding: 80px 24px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .join-inner {
+        .ios-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 64px;
             align-items: start;
         }
 
-        .join-copy .section-label { margin-bottom: 16px; }
+        .ios-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface-2);
+            border: 1px solid var(--border-medium);
+            border-radius: 100px;
+            padding: 6px 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
 
-        .join-note {
+        .ios-copy p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+
+        .ios-status-box {
             margin-top: 24px;
+            padding: 16px 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid var(--border-medium);
+            border-radius: 0 8px 8px 0;
             font-size: 13px;
             color: var(--text-muted);
             line-height: 1.6;
         }
+        .ios-status-box strong {
+            color: var(--text-secondary);
+        }
 
-        /* ── Join Card (isolated component – Firebase-ready) ── */
-        .join-card {
-            background: var(--surface-1);
+        /* ── iOS Interest Card (email-only, no backend storage) ── */
+        .waitlist-card {
+            background: var(--page-bg);
             border: 1px solid var(--border-medium);
             border-radius: 12px;
             padding: 32px;
@@ -418,77 +444,86 @@
             overflow: hidden;
         }
 
-        .join-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-cool), transparent);
-        }
-
-        .join-card-title {
+        .waitlist-card-title {
             font-size: 18px;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 12px;
         }
 
-        .join-card-body {
+        .waitlist-card-body {
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.6;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
         }
 
-        /* Primary email CTA button (replace this block with Firebase form later) */
-        #btn-request-beta {
+        .btn-waitlist {
             width: 100%;
-            padding: 14px;
-            background: var(--accent-cool);
-            color: #0C0D0F;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 20px;
+            background: var(--surface-2);
+            color: var(--text-primary);
             font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            font-weight: 700;
-            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.22);
             border-radius: 8px;
             cursor: pointer;
-            transition: background 0.2s ease, transform 0.15s ease;
+            transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
         }
-        #btn-request-beta:hover {
-            background: #a5d6d3;
-            transform: translateY(-1px);
+        .btn-waitlist:hover {
+            background: var(--surface-3);
+            border-color: var(--accent-cool);
+            color: var(--accent-cool);
+        }
+        .btn-waitlist:focus-visible {
+            outline: 2px solid var(--accent-cool);
+            outline-offset: 3px;
         }
 
-        .join-card-note {
-            margin-top: 16px;
+        .waitlist-direct-mail {
+            margin-top: 14px;
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+        }
+        .waitlist-direct-mail code {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            user-select: all;
+        }
+
+        .waitlist-card-divider {
+            height: 1px;
+            background: var(--border-subtle);
+            margin: 22px 0;
+        }
+
+        .waitlist-privacy-note {
             font-size: 12px;
             color: var(--text-muted);
             line-height: 1.6;
         }
-
-        .join-card-divider {
-            height: 1px;
-            background: var(--border-subtle);
-            margin: 24px 0;
-        }
-
-        .join-card-footer {
-            font-size: 13px;
+        .waitlist-privacy-note strong {
             color: var(--text-secondary);
-            line-height: 1.55;
         }
-
-        .join-card-footer a {
+        .waitlist-privacy-note a {
             color: var(--accent-cool);
             text-decoration: none;
         }
-        .join-card-footer a:hover { text-decoration: underline; }
+        .waitlist-privacy-note a:hover {
+            text-decoration: underline;
+        }
 
         /* ══════════════════════════════════════════════════
            CROSS-LINKS SECTION
            ══════════════════════════════════════════════════ */
         .xlinks-section {
-            padding: 0 24px 80px;
+            padding: 80px 24px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -508,7 +543,6 @@
             text-decoration: none;
             transition: border-color 0.2s ease, background 0.2s ease;
         }
-
         .xlink-card:hover {
             background: var(--surface-2);
             border-color: var(--border-medium);
@@ -540,7 +574,7 @@
         /* ══════════════════════════════════════════════════
            FOOTER
            ══════════════════════════════════════════════════ */
-        .beta-footer {
+        .page-footer {
             border-top: 1px solid var(--border-subtle);
             padding: 32px 24px;
             text-align: center;
@@ -569,9 +603,9 @@
         }
 
         /* ══════════════════════════════════════════════════
-           MODAL (isolated CTA component)
+           iOS EMAIL MODAL (One-click prefilled email helper)
            ══════════════════════════════════════════════════ */
-        #beta-modal {
+        #ios-modal {
             display: none;
             position: fixed;
             inset: 0;
@@ -583,17 +617,17 @@
             backdrop-filter: blur(6px);
         }
 
-        #beta-modal.open { display: flex; }
+        #ios-modal.open { display: flex; }
 
         .modal-inner {
             background: var(--surface-1);
             border: 1px solid var(--border-medium);
             border-radius: 12px;
             width: 100%;
-            max-width: 500px;
+            max-width: 520px;
             padding: 36px;
             position: relative;
-            animation: fadeSlideUp 0.3s ease-out forwards;
+            animation: fadeSlideUp 0.25s ease-out forwards;
         }
 
         .modal-close {
@@ -613,45 +647,56 @@
             font-size: 20px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .modal-body {
             font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.65;
+            line-height: 1.6;
             margin-bottom: 8px;
         }
 
+        .modal-meta {
+            background: var(--page-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 14px 0 18px;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .modal-meta strong {
+            color: var(--text-secondary);
+        }
         .modal-email {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-primary);
             user-select: all;
-            display: block;
-            margin: 12px 0 16px;
         }
 
         .modal-note {
             font-size: 12px;
             color: var(--text-muted);
-            background: rgba(255,255,255,0.03);
-            border-left: 3px solid var(--accent-cool);
-            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--border-medium);
+            padding: 11px 14px;
             border-radius: 0 4px 4px 0;
-            margin-bottom: 24px;
-            line-height: 1.5;
+            margin-bottom: 22px;
+            line-height: 1.55;
         }
 
         .modal-actions {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
-        .modal-btn-gmail {
-            flex: 1;
+        .modal-btn-primary {
+            flex: 1 1 160px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -664,10 +709,10 @@
             text-decoration: none;
             transition: background 0.2s ease;
         }
-        .modal-btn-gmail:hover { background: #a5d6d3; }
+        .modal-btn-primary:hover { background: #a5d6d3; }
 
-        .modal-btn-copy {
-            flex: 1;
+        .modal-btn-secondary {
+            flex: 1 1 140px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -675,30 +720,33 @@
             border: 1px solid var(--border-medium);
             color: var(--text-primary);
             font-weight: 500;
-            font-size: 14px;
-            padding: 12px 16px;
+            font-size: 13px;
+            padding: 12px 14px;
             border-radius: 6px;
+            text-decoration: none;
             cursor: pointer;
             transition: border-color 0.2s ease, color 0.2s ease;
         }
-        .modal-btn-copy:hover { border-color: var(--accent-cool); color: var(--accent-cool); }
+        .modal-btn-secondary:hover {
+            border-color: var(--accent-cool);
+            color: var(--accent-cool);
+        }
 
         .modal-privacy {
             margin-top: 16px;
             font-size: 11px;
             color: var(--text-muted);
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.55;
         }
-        .modal-privacy a { color: var(--text-muted); text-decoration: underline; }
+        .modal-privacy a { color: var(--text-secondary); text-decoration: underline; }
 
         /* ══════════════════════════════════════════════════
            RESPONSIVE
            ══════════════════════════════════════════════════ */
         @media (max-width: 1024px) {
-            .hero-inner { gap: 48px; }
-            .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
-            .steps-grid::after { display: none; }
+            .hero-inner { gap: 44px; }
+            .phone-frame { width: 195px; }
         }
 
         @media (max-width: 900px) {
@@ -708,30 +756,30 @@
             }
             .hero-sub { margin-left: auto; margin-right: auto; }
             .hero-cta-group { justify-content: center; }
-            .hero-visual { margin-top: 0; }
-            .hero-product-img { max-width: 100%; }
             .cap-grid { grid-template-columns: repeat(2, 1fr); }
-            .join-inner { grid-template-columns: 1fr; gap: 40px; }
+            .ios-inner { grid-template-columns: 1fr; gap: 40px; }
             .xlinks-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 600px) {
-            .hero { padding: 40px 16px 60px; }
+            .hero { padding: 40px 16px 60px; min-height: auto; }
             .hero-headline { font-size: clamp(30px, 8vw, 42px); }
-            .section { padding: 60px 16px; }
-            .section-alt .section { padding: 60px 16px; }
-            .join-section { padding: 60px 16px; }
-            .xlinks-section { padding: 0 16px 60px; }
+            .section, .ios-section, .xlinks-section { padding: 60px 16px; }
             .cap-grid { grid-template-columns: 1fr; }
-            .steps-grid { grid-template-columns: 1fr; }
-            .hero-cta-group { flex-direction: column; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .hero-cta-group { flex-direction: column; width: 100%; }
+            .store-cta-btn, .btn-secondary { width: 100%; justify-content: center; }
+            .phone-showcase { gap: 12px; }
+            .phone-frame { width: 155px; border-radius: 20px; padding: 6px; }
+            .phone-frame img { border-radius: 15px; }
+            .waitlist-card { padding: 24px 20px; }
             .modal-inner { padding: 24px 20px; }
             .modal-actions { flex-direction: column; }
+            .modal-btn-primary, .modal-btn-secondary { flex: none; width: 100%; }
         }
 
-        @media (max-width: 390px) {
-            .hero-product-img { border-radius: 8px; }
+        @media (max-width: 380px) {
+            .phone-frame.offset-phone { display: none; }
+            .phone-frame { width: 210px; }
         }
     </style>
 </head>
@@ -748,7 +796,7 @@
                 <a href="../knowledge/" class="global-nav-link">Knowledge</a>
                 <a href="../manual/" class="global-nav-link">Manual</a>
                 <a href="../release-notes/" class="global-nav-link">Release Notes</a>
-                <a href="../beta/" class="global-nav-link beta-link active">Beta</a>
+                <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="global-nav-link store-link" aria-label="Get OSRTIME Sync-Box TCR on Google Play"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/><path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/><path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/><path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/></svg>Google Play</a>
             </nav>
             <button class="mobile-menu-btn" aria-label="Open menu">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -759,74 +807,100 @@
             <a href="../knowledge/" class="global-nav-link">Knowledge</a>
             <a href="../manual/" class="global-nav-link">Manual</a>
             <a href="../release-notes/" class="global-nav-link">Release Notes</a>
-            <a href="../beta/" class="global-nav-link beta-link active">Beta</a>
+            <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer" class="global-nav-link store-link" aria-label="Get OSRTIME Sync-Box TCR on Google Play"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/><path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/><path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/><path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/></svg>Google Play</a>
         </div>
     </header>
 
-    <div class="beta-page">
+    <div class="download-page">
 
         <!-- ══════════════════════════════════════════════════
-             HERO
+             PART 1: ANDROID – AVAILABLE ON GOOGLE PLAY
              ══════════════════════════════════════════════════ -->
-        <section class="hero" id="hero">
+        <section class="hero" id="android">
             <div class="hero-inner">
                 <div class="hero-copy">
                     <div class="hero-eyebrow">
                         <div class="hero-eyebrow-dot"></div>
-                        Android Beta
+                        Android &mdash; Available on Google Play
                     </div>
                     <h1 class="hero-headline">
-                        Test<br><em>OSRTIME</em><br>Sync-Box TCR
+                        OSRTIME<br><em>Sync-Box TCR</em><br>for Android
                     </h1>
                     <p class="hero-sub">
-                        Professional timecode generation, LTC, wireless synchronization and field recording on Android.<br><br>
-                        OSRTIME Sync-Box TCR is currently being tested in real production workflows. We are looking for testers from filmmaking, production sound and video production.
+                        Professional SMPTE timecode generation, LTC input and output, wireless multi-device synchronization, USB audio routing and BWF field recording.<br><br>
+                        OSRTIME Sync-Box TCR is built for Android devices and available directly via Google Play.
                     </p>
                     <div class="hero-cta-group">
-                        <button id="btn-request-beta-hero" class="btn-primary">
-                            Join the Beta
-                        </button>
+                        <a
+                            href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="store-cta-btn"
+                            aria-label="Get OSRTIME Sync-Box TCR for Android on Google Play">
+                            <svg class="store-cta-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92z" fill="#4285F4"/>
+                                <path d="M17.556 8.236l-3.764 3.764 3.764 3.764 4.243-2.404c.48-.272.48-.936 0-1.208l-4.243-2.404-.466.488h.466z" fill="#FBBC04"/>
+                                <path d="M3.609 22.186a.996.996 0 0 0 .391.194l9.792-5.556-3.764-3.764L3.61 22.186z" fill="#EA4335"/>
+                                <path d="M13.792 5.176L4 1.62a.996.996 0 0 0-.391.194L10.028 12l3.764-3.764v-3.06z" fill="#34A853"/>
+                            </svg>
+                            <span class="store-cta-copy">
+                                <span class="store-cta-overline">Get it on</span>
+                                <span class="store-cta-title">Google Play</span>
+                            </span>
+                        </a>
                         <a href="../manual/" class="btn-secondary">
-                            See the Manual
+                            Read the Manual
                         </a>
                     </div>
-                    <p class="hero-disclaimer">
-                        Beta access is limited and managed manually. Access is subject to availability.<br>
-                        Approved testers receive installation instructions via email.
+                    <p class="hero-platform-note">
+                        Current release platform: <strong>Android</strong>. Working on iPhone or iPad? <a href="#ios-waitlist">Go to the iOS Waitlist ↓</a>
                     </p>
                 </div>
 
                 <div class="hero-visual">
-                    <img
-                        class="hero-product-img"
-                        src="../assets/img/osrtime_product_hero.png"
-                        alt="OSRTIME Sync-Box TCR — Android Beta. Professional timecode on a film set with camera equipment."
-                        loading="eager">
+                    <div class="phone-showcase">
+                        <div class="phone-frame">
+                            <img
+                                src="../assets/img/manual/master-clock-default.jpg"
+                                width="1080"
+                                height="2400"
+                                alt="OSRTIME Sync-Box TCR on Android showing the Master Clock display in TOD mode at 24 fps"
+                                loading="eager">
+                        </div>
+                        <div class="phone-frame offset-phone">
+                            <img
+                                src="../assets/img/manual/control-ltc-locked.jpg"
+                                width="1080"
+                                height="2400"
+                                alt="OSRTIME Sync-Box TCR on Android showing the Control page with LTC lock and Wi-Fi input"
+                                loading="eager">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ══════════════════════════════════════════════════
-             CAPABILITIES
+             ANDROID CAPABILITIES
              ══════════════════════════════════════════════════ -->
         <div class="section" id="capabilities">
-            <div class="section-label">What you are testing</div>
+            <div class="section-label">Android App Capabilities</div>
             <h2 class="section-heading">Professional production tools on Android</h2>
             <p class="section-sub">
-                Each capability below is currently available in the beta. Your feedback on these areas directly shapes the production release.
+                Core timecode, synchronization and recording workflows included in OSRTIME Sync-Box TCR for Android.
             </p>
 
             <div class="cap-grid">
                 <div class="cap-card">
                     <div class="cap-icon">⏱</div>
                     <div class="cap-title">Timecode Generation</div>
-                    <p class="cap-desc">SMPTE timecode at 24, 25, 29.97 NDF/DF, 30 NDF/DF and more. Time of Day, custom start value or jammed from an external source.</p>
+                    <p class="cap-desc">SMPTE timecode at 23.976, 24, 25, 29.97 NDF/DF, 30 NDF/DF and high frame rates. Time of Day, custom start value or jammed from an external source.</p>
                     <a href="../knowledge/" class="cap-link">Timecode explained</a>
                 </div>
                 <div class="cap-card">
                     <div class="cap-icon">🔊</div>
                     <div class="cap-title">LTC In &amp; Out</div>
-                    <p class="cap-desc">Receive and decode Linear Timecode via built-in microphone or USB audio interface. Output LTC via headphone jack or USB audio.</p>
+                    <p class="cap-desc">Receive and decode Linear Timecode via built-in microphone or USB audio interface. Output LTC via audio jack or compatible interface.</p>
                     <a href="../manual/#jam-sync" class="cap-link">How Jam Sync works</a>
                 </div>
                 <div class="cap-card">
@@ -844,103 +918,61 @@
                 <div class="cap-card">
                     <div class="cap-icon">🔌</div>
                     <div class="cap-title">USB Audio Routing</div>
-                    <p class="cap-desc">Class-compliant USB audio interfaces with up to 4 channels. Cross-point channel assignment and individual level monitoring.</p>
+                    <p class="cap-desc">Class-compliant USB audio interfaces with up to 4 channels, manual 24-bit recording support on compatible hardware and per-channel metering.</p>
                     <a href="../manual/#routing" class="cap-link">Routing guide</a>
                 </div>
                 <div class="cap-card">
                     <div class="cap-icon">🌐</div>
                     <div class="cap-title">Multilingual UI</div>
-                    <p class="cap-desc">Interface available in English, Deutsch, Español, 中文, العربية and עברית. We want to know how the app works in your language and region.</p>
+                    <p class="cap-desc">Interface available in English, Deutsch, Español, 中文, العربية and עברית for international film and broadcast crews.</p>
                     <a href="../manual/#settings" class="cap-link">Language settings</a>
                 </div>
             </div>
         </div>
 
         <!-- ══════════════════════════════════════════════════
-             HOW TO JOIN
+             PART 2: iOS – JOIN THE WAITLIST (FUTURE OPTION)
              ══════════════════════════════════════════════════ -->
-        <div class="section-alt" id="how-to-join">
-            <div class="section">
-                <div class="section-label">The beta process</div>
-                <h2 class="section-heading">How it works</h2>
-                <p class="section-sub">
-                    The beta runs through Google Play's private testing track. There is no public download link — access is enabled per Google account.
-                </p>
+        <section class="ios-band" id="ios-waitlist">
+            <div class="ios-section">
+                <div class="ios-inner">
+                    <div class="ios-copy">
+                        <div class="ios-eyebrow">Potential Future Option &middot; Not Announced</div>
+                        <h2 class="section-heading">iOS &mdash; Join the Waitlist</h2>
+                        <p>
+                            OSRTIME Sync-Box TCR is currently available exclusively for <strong>Android</strong>.
+                        </p>
+                        <p>
+                            If you work on iPhone or iPad and would like to express your interest in a possible future iOS version, you can send us a short email. Hearing from production crews helps us gauge platform demand.
+                        </p>
+                        <div class="ios-status-box">
+                            <strong>Please note:</strong> An iOS version is currently not an announced product. There is no confirmed development schedule, release date, or guarantee of future availability or notification.
+                        </div>
+                    </div>
 
-                <div class="steps-grid">
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <div class="step-title">Request Access</div>
-                        <p class="step-desc">Send us an email from the address linked to your Google Play account. Tell us about your use case and Android device.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <div class="step-title">We Review &amp; Enable</div>
-                        <p class="step-desc">We manually register your Google account for the private testing track. This is not automated.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">3</div>
-                        <div class="step-title">Install via Play Store</div>
-                        <p class="step-desc">You receive a Google Play beta opt-in link by email. Open it on your Android device and install the app from the Play Store.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">4</div>
-                        <div class="step-title">Test in Your Workflow</div>
-                        <p class="step-desc">Use OSRTIME Sync-Box TCR in real production. Report what works, what doesn't, and what you'd like to see next.</p>
+                    <div class="waitlist-card" id="waitlist-card">
+                        <div class="waitlist-card-title">Register iOS Interest via Email</div>
+                        <p class="waitlist-card-body">
+                            Use the button below to prepare a prefilled email to <strong>apple@osrtime.com</strong>. Nothing is submitted or stored automatically on this website &mdash; you review and send the email yourself in your own mail app.
+                        </p>
+
+                        <button id="btn-open-ios-modal" class="btn-waitlist" type="button">
+                            Prepare Interest Email &rarr;
+                        </button>
+
+                        <div class="waitlist-direct-mail">
+                            Direct email: <code>apple@osrtime.com</code> &middot; Subject: <code>OSRTIME iOS Waitlist</code>
+                        </div>
+
+                        <div class="waitlist-card-divider"></div>
+
+                        <div class="waitlist-privacy-note">
+                            <strong>Data Protection &amp; Communication Notice:</strong> When you send an email to <code>apple@osrtime.com</code>, we process your email address and any details you include in your message solely to receive and record your non-binding iOS interest inquiry. Sending an inquiry email does <strong>not</strong> result in automatic addition to a mailing group and does <strong>not</strong> subscribe you to a newsletter or automated marketing messages. See our <a href="../privacy/">Privacy Policy</a>.
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- ══════════════════════════════════════════════════
-             JOIN CARD (isolated / Firebase-ready component)
-             ══════════════════════════════════════════════════ -->
-        <div class="join-section" id="join">
-            <div class="join-inner">
-                <div class="join-copy">
-                    <div class="section-label">Apply for beta access</div>
-                    <h2 class="section-heading">Who we are looking for</h2>
-                    <p class="section-sub" style="margin-bottom: 24px;">
-                        Testers who work in or adjacent to professional production environments and are willing to integrate OSRTIME Sync-Box TCR into a real workflow — not just a test bench.
-                    </p>
-                    <ul style="font-size: 14px; color: var(--text-secondary); line-height: 1.7; padding-left: 20px; margin-bottom: 24px;">
-                        <li style="margin-bottom: 6px;">Film and video production crews</li>
-                        <li style="margin-bottom: 6px;">Production sound recordists and boom operators</li>
-                        <li style="margin-bottom: 6px;">Broadcast and live production teams</li>
-                        <li style="margin-bottom: 6px;">Media technology educators and students</li>
-                        <li>Anyone working with professional timecode equipment</li>
-                    </ul>
-                    <p class="join-note">
-                        No prior experience with OSRTIME is required. A working Android device and a Google Play account are sufficient.
-                    </p>
-                </div>
-
-                <!-- ── Join Card: replace interior with Firebase form when ready ── -->
-                <div class="join-card" id="join-card">
-                    <div class="join-card-title">Request Beta Access</div>
-                    <div class="join-card-body">
-                        To participate, send us an email from the Google account you use with Google Play. Include your Android device model and a brief description of your use case.
-                    </div>
-
-                    <!-- Primary CTA – replace with Firebase form component -->
-                    <button id="btn-request-beta" type="button">
-                        Request Beta Access →
-                    </button>
-
-                    <div class="join-card-note">
-                        Beta access is limited and subject to availability. Access is not automatic. We review all requests manually.
-                    </div>
-
-                    <div class="join-card-divider"></div>
-
-                    <div class="join-card-footer">
-                        <strong style="color: var(--text-primary);">Important:</strong> Use the same Google account that is signed in to the Google Play Store on your Android device. Installing through the testing track requires this account to be registered first.<br><br>
-                        <strong style="color: var(--text-primary);">Google Play:</strong> The app is not publicly available on the Play Store. The testing track link is sent to approved testers only — it cannot be accessed by unregistered accounts.
-                    </div>
-                </div>
-                <!-- ── End Join Card ── -->
-            </div>
-        </div>
+        </section>
 
         <!-- ══════════════════════════════════════════════════
              CROSS-LINKS
@@ -955,7 +987,7 @@
                 </a>
                 <a href="../manual/" class="xlink-card">
                     <div class="xlink-label">App Manual</div>
-                    <div class="xlink-title">Want to see how the app works?</div>
+                    <div class="xlink-title">Want to see how the Android app works?</div>
                     <p class="xlink-desc">The complete operation guide for OSRTIME Sync-Box TCR, with annotated screenshots of every major workflow.</p>
                 </a>
             </div>
@@ -964,11 +996,13 @@
         <!-- ══════════════════════════════════════════════════
              FOOTER
              ══════════════════════════════════════════════════ -->
-        <footer class="beta-footer">
+        <footer class="page-footer">
             <div class="footer-links">
                 <a href="../">Home</a>
                 <a href="../knowledge/">Knowledge</a>
                 <a href="../manual/">Manual</a>
+                <a href="../release-notes/">Release Notes</a>
+                <a href="https://play.google.com/store/apps/details?id=com.worldtimecode.world_timecode" target="_blank" rel="noopener noreferrer">Google Play</a>
                 <a href="../privacy/">Privacy</a>
                 <a href="https://www.youtube.com/@OSRTIME-TCR" target="_blank" rel="noopener noreferrer">YouTube</a>
                 <a href="https://mein.online-impressum.de/hardwarestream/" target="_blank" rel="noopener noreferrer">Impressum</a>
@@ -978,42 +1012,50 @@
             </div>
         </footer>
 
-    </div><!-- /.beta-page -->
+    </div><!-- /.download-page -->
 
     <!-- ══════════════════════════════════════════════════
-         BETA JOIN MODAL (isolated CTA component)
+         iOS WAITLIST EMAIL MODAL (User-sent email helper)
          ══════════════════════════════════════════════════ -->
-    <div id="beta-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div id="ios-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-inner">
-            <button id="btn-close-modal" class="modal-close" aria-label="Close">&times;</button>
+            <button id="btn-close-modal" class="modal-close" type="button" aria-label="Close dialog">&times;</button>
 
-            <div class="modal-title" id="modal-title">Join the OSRTIME Sync-Box TCR Beta</div>
+            <div class="modal-title" id="modal-title">iOS — Join the Waitlist</div>
 
             <p class="modal-body">
-                To participate in the private Android beta, contact us from the email address associated with your Google Play account.
+                To register non-binding interest in a potential future iOS version of OSRTIME Sync-Box TCR, send us an email from your own email program.
             </p>
-            <p class="modal-body">Send your request to:</p>
-            <span class="modal-email">beta@osrtime.com</span>
+
+            <div class="modal-meta">
+                <div><strong>To:</strong> <span class="modal-email">apple@osrtime.com</span></div>
+                <div><strong>Subject:</strong> OSRTIME iOS Waitlist</div>
+            </div>
 
             <div class="modal-note">
-                <strong>Important:</strong> Use the same Google account that is signed in to the Google Play Store. We need this to enable your testing access.
+                Nothing is sent automatically by this website. Choose an option below, review the prefilled draft, and send the email yourself.
             </div>
 
             <div class="modal-actions">
                 <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=beta@osrtime.com&su=OSRTIME%20Sync-Box%20TCR%20Beta%20Access&body=Hello%20OSRTIME%2C%0A%0AI%20would%20like%20to%20join%20the%20OSRTIME%20Sync-Box%20TCR%20Android%20beta.%0A%0AAndroid%20device%3A%20%0AAndroid%20version%3A%20%0AUse%20case%2FWorkflow%3A%20%0A%0AThis%20email%20address%20is%20associated%20with%20my%20Google%20Play%20account.%0A%0ABest%20regards"
+                    href="mailto:apple@osrtime.com?subject=OSRTIME%20iOS%20Waitlist&body=Hello%20OSRTIME%20team%2C%0A%0AI%20would%20like%20to%20register%20my%20interest%20in%20a%20future%20iOS%20version%20of%20OSRTIME%20Sync-Box%20TCR."
+                    class="modal-btn-primary">
+                    Open Email App
+                </a>
+                <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=apple@osrtime.com&su=OSRTIME%20iOS%20Waitlist&body=Hello%20OSRTIME%20team%2C%0A%0AI%20would%20like%20to%20register%20my%20interest%20in%20a%20future%20iOS%20version%20of%20OSRTIME%20Sync-Box%20TCR."
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="modal-btn-gmail">
-                    Open Gmail
+                    class="modal-btn-secondary">
+                    Open in Gmail
                 </a>
-                <button id="btn-copy-email" class="modal-btn-copy" type="button">
-                    Copy Email Address
+                <button id="btn-copy-email" class="modal-btn-secondary" type="button">
+                    Copy Address
                 </button>
             </div>
 
             <div class="modal-privacy">
-                Information about how we handle your data can be found in our <a href="../privacy/">Privacy Policy</a>.
+                Your email address and message content are processed solely to handle your iOS interest inquiry &mdash; no automatic group membership or newsletter signup. <a href="../privacy/">Privacy Policy</a>
             </div>
         </div>
     </div>
@@ -1022,24 +1064,24 @@
     <script src="../assets/js/global-header.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const modal       = document.getElementById('beta-modal');
-            const btnHero     = document.getElementById('btn-request-beta-hero');
-            const btnCard     = document.getElementById('btn-request-beta');
-            const btnClose    = document.getElementById('btn-close-modal');
-            const btnCopy     = document.getElementById('btn-copy-email');
+            const modal    = document.getElementById('ios-modal');
+            const btnOpen  = document.getElementById('btn-open-ios-modal');
+            const btnClose = document.getElementById('btn-close-modal');
+            const btnCopy  = document.getElementById('btn-copy-email');
 
             function openModal() {
                 modal.classList.add('open');
                 document.body.style.overflow = 'hidden';
+                if (btnClose) btnClose.focus();
             }
 
             function closeModal() {
                 modal.classList.remove('open');
                 document.body.style.overflow = '';
+                if (btnOpen) btnOpen.focus();
             }
 
-            if (btnHero)  btnHero.addEventListener('click', openModal);
-            if (btnCard)  btnCard.addEventListener('click', openModal);
+            if (btnOpen)  btnOpen.addEventListener('click', openModal);
             if (btnClose) btnClose.addEventListener('click', closeModal);
 
             modal.addEventListener('click', function (e) {
@@ -1047,12 +1089,15 @@
             });
 
             document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') closeModal();
+                if (e.key === 'Escape' && modal.classList.contains('open')) {
+                    closeModal();
+                }
             });
 
             if (btnCopy) {
                 btnCopy.addEventListener('click', function () {
-                    navigator.clipboard.writeText('beta@osrtime.com').then(function () {
+                    const addr = 'apple@osrtime.com';
+                    function showCopied() {
                         const orig = btnCopy.textContent;
                         btnCopy.textContent = 'Copied!';
                         btnCopy.style.borderColor = 'var(--accent-cool)';
@@ -1062,7 +1107,20 @@
                             btnCopy.style.borderColor = '';
                             btnCopy.style.color = '';
                         }, 2000);
-                    });
+                    }
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(addr).then(showCopied).catch(function () {
+                            const ta = document.createElement('textarea');
+                            ta.value = addr;
+                            ta.setAttribute('readonly', '');
+                            ta.style.position = 'fixed';
+                            ta.style.opacity = '0';
+                            document.body.appendChild(ta);
+                            ta.select();
+                            try { document.execCommand('copy'); showCopied(); } catch (e) {}
+                            document.body.removeChild(ta);
+                        });
+                    }
                 });
             }
         });
