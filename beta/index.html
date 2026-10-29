@@ -665,7 +665,10 @@
             line-height: 1;
             transition: color 0.2s ease;
         }
+        .modal-close { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; padding: 0; border-radius: 6px; }
         .modal-close:hover { color: var(--text-primary); }
+        .modal-close:focus { outline: none; }
+        .modal-close:focus-visible { outline: 2px solid var(--accent-cool); outline-offset: 2px; color: var(--text-primary); }
 
         .modal-title {
             font-size: 20px;
@@ -713,39 +716,63 @@
             line-height: 1.55;
         }
 
+        .modal-pre {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border-subtle);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            line-height: 1.5;
+            user-select: all;
+        }
+
+        .modal-verify {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            background: rgba(128, 203, 196, 0.06);
+            border-left: 3px solid var(--accent-cool);
+            padding: 10px 14px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 18px;
+            line-height: 1.55;
+        }
+
         .modal-actions {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
-            flex-wrap: wrap;
         }
 
         .modal-btn-primary {
-            flex: 1 1 160px;
+            grid-column: 1 / -1;
             display: inline-flex;
             justify-content: center;
             align-items: center;
             background: var(--accent-cool);
+            border: 1px solid var(--accent-cool);
             color: #0C0D0F;
             font-weight: 700;
             font-size: 14px;
-            padding: 12px 16px;
+            padding: 13px 16px;
             border-radius: 6px;
             text-decoration: none;
-            transition: background 0.2s ease;
+            transition: background 0.2s ease, border-color 0.2s ease;
         }
-        .modal-btn-primary:hover { background: #a5d6d3; }
+        .modal-btn-primary:hover { background: #a5d6d3; border-color: #a5d6d3; }
 
         .modal-btn-secondary {
-            flex: 1 1 140px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
             background: var(--surface-2);
             border: 1px solid var(--border-medium);
             color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
             font-weight: 500;
             font-size: 13px;
-            padding: 12px 14px;
+            padding: 11px 14px;
             border-radius: 6px;
             text-decoration: none;
             cursor: pointer;
@@ -797,8 +824,8 @@
             .phone-frame img { border-radius: 15px; }
             .waitlist-card { padding: 24px 20px; }
             .modal-inner { padding: 24px 20px; }
-            .modal-actions { flex-direction: column; }
-            .modal-btn-primary, .modal-btn-secondary { flex: none; width: 100%; }
+            .modal-actions { grid-template-columns: 1fr; }
+            .modal-btn-primary, .modal-btn-secondary { width: 100%; }
         }
 
         @media (max-width: 380px) {
@@ -977,19 +1004,13 @@
                     <div class="waitlist-card" id="waitlist-card">
                         <div class="waitlist-card-title">Request iOS Release Notification</div>
                         <p class="waitlist-card-body">
-                            Click below to open your email program with a prefilled notification request to <strong>apple@osrtime.com</strong>. No user account is required, and nothing is sent until you review and send the email yourself.
+                            Click below to open a prefilled request in Gmail or copy the recipient address, subject and message text for your own email client. Nothing is sent automatically until you send the email yourself.
                         </p>
 
-                        <a id="btn-ios-mailto" href="mailto:apple@osrtime.com?subject=OSRTIME%20iOS%20Waitlist%20%E2%80%93%20Registration%20Request&amp;body=Hello%20OSRTIME%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20join%20the%20OSRTIME%20iOS%20Waitlist%20and%20receive%20an%20email%20notification%20when%20the%20iOS%20version%20becomes%20available.%0D%0A%0D%0APlease%20add%20my%20email%20address%20to%20the%20notification%20list.%0D%0A%0D%0ABest%20regards" class="btn-waitlist">
+                        <button id="btn-ios-waitlist" type="button" class="btn-waitlist js-ios-waitlist" aria-haspopup="dialog" aria-controls="ios-modal">
                             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                             iOS &ndash; Join Waitlist
-                        </a>
-
-                        <div class="waitlist-alt-wrap">
-                            <button id="btn-open-ios-modal" class="waitlist-alt-btn" type="button">
-                                No email app configured? Copy address or open in Gmail
-                            </button>
-                        </div>
+                        </button>
 
                         <div class="waitlist-direct-mail">
                             Address: <code>apple@osrtime.com</code> &middot; Subject: <code>OSRTIME iOS Waitlist &ndash; Registration Request</code>
@@ -998,7 +1019,7 @@
                         <div class="waitlist-card-divider"></div>
 
                         <div class="waitlist-privacy-note">
-                            <strong>Transparency &amp; Data Protection:</strong> When you send an email to <code>apple@osrtime.com</code>, we process your email address and message content to handle your request and notify you if OSRTIME Sync-Box TCR becomes available for iOS. Clicking the button only opens your mail client &mdash; automated instant enrollment is not guaranteed at this stage, and no iOS release date is promised. Your email address is never shared with or visible to other waitlist participants. You can withdraw your request or unsubscribe at any time by sending a short email to <code>apple@osrtime.com</code> or <code>support@osrtime.com</code>. Details in our <a href="../privacy/#ios-waitlist">Privacy Policy</a>.
+                            <strong>Transparency &amp; Data Protection:</strong> When you send an email to <code>apple@osrtime.com</code>, we process your email address and message content to handle your request and notify you if OSRTIME Sync-Box TCR becomes available for iOS. After sending your request, you&rsquo;ll receive a verification email to confirm your place on the waitlist; no iOS release date is promised. Your email address is never shared with or visible to other waitlist participants. You can withdraw your request or unsubscribe at any time by sending a short email to <code>apple@osrtime.com</code> or <code>support@osrtime.com</code>. Details in our <a href="../privacy/#ios-waitlist">Privacy Policy</a>.
                         </div>
                     </div>
                 </div>
@@ -1046,47 +1067,53 @@
     </div><!-- /.download-page -->
 
     <!-- ══════════════════════════════════════════════════
-         iOS WAITLIST EMAIL MODAL (User-sent email helper)
+         iOS WAITLIST MODAL
          ══════════════════════════════════════════════════ -->
     <div id="ios-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-inner">
             <button id="btn-close-modal" class="modal-close" type="button" aria-label="Close dialog">&times;</button>
 
-            <div class="modal-title" id="modal-title">Notify Me When iOS Is Available</div>
+            <div class="modal-title" id="modal-title">OSRTIME iOS Waitlist</div>
 
             <p class="modal-body">
-                Send a prefilled notification request from your own email program or webmail service if you would like to hear from us should OSRTIME Sync-Box TCR become available for iOS.
+                Open a prefilled draft directly in Gmail, or copy the recipient address, subject and message text below to send the request from any other email provider:
             </p>
 
             <div class="modal-meta">
-                <div><strong>To:</strong> <span class="modal-email">apple@osrtime.com</span></div>
+                <div><strong>To:</strong> <span class="modal-email" id="beta-modal-email-text">apple@osrtime.com</span></div>
                 <div><strong>Subject:</strong> OSRTIME iOS Waitlist &ndash; Registration Request</div>
+                <div class="modal-pre" id="beta-modal-pre-text">Hello OSRTIME Team,
+
+I would like to join the OSRTIME iOS Waitlist and receive an email notification when the iOS version becomes available.
+
+Please add my email address to the notification list.
+
+Best regards</div>
             </div>
 
-            <div class="modal-note">
-                Nothing is sent automatically by this website. Choose an option below, review the prefilled message, and send the email yourself.
+            <div class="modal-verify">
+                After sending your request, you&rsquo;ll receive a verification email. Please follow its instructions to confirm your place on the waitlist.
             </div>
 
             <div class="modal-actions">
-                <a
-                    href="mailto:apple@osrtime.com?subject=OSRTIME%20iOS%20Waitlist%20%E2%80%93%20Registration%20Request&amp;body=Hello%20OSRTIME%20Team%2C%0D%0A%0D%0AI%20would%20like%20to%20join%20the%20OSRTIME%20iOS%20Waitlist%20and%20receive%20an%20email%20notification%20when%20the%20iOS%20version%20becomes%20available.%0D%0A%0D%0APlease%20add%20my%20email%20address%20to%20the%20notification%20list.%0D%0A%0D%0ABest%20regards"
-                    class="modal-btn-primary">
-                    Open Email App
-                </a>
+                <button id="btn-copy-email" class="modal-btn-secondary" type="button">
+                    Copy Email Address
+                </button>
+                <button id="btn-copy-msg" class="modal-btn-secondary" type="button">
+                    Copy Subject &amp; Text
+                </button>
                 <a
                     href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=apple@osrtime.com&amp;su=OSRTIME%20iOS%20Waitlist%20%E2%80%93%20Registration%20Request&amp;body=Hello%20OSRTIME%20Team%2C%0A%0AI%20would%20like%20to%20join%20the%20OSRTIME%20iOS%20Waitlist%20and%20receive%20an%20email%20notification%20when%20the%20iOS%20version%20becomes%20available.%0A%0APlease%20add%20my%20email%20address%20to%20the%20notification%20list.%0A%0ABest%20regards"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="modal-btn-secondary">
+                    class="modal-btn-primary"
+                    id="btn-open-gmail">
                     Open in Gmail
                 </a>
-                <button id="btn-copy-email" class="modal-btn-secondary" type="button">
-                    Copy Address
-                </button>
             </div>
 
             <div class="modal-privacy">
-                Processed for possible iOS release notifications &mdash; never shared with other participants. Unsubscribe anytime by emailing <code>apple@osrtime.com</code>. <a href="../privacy/#ios-waitlist">Privacy Policy</a>
+                Nothing is sent automatically when opening this dialog &mdash; your request is only submitted once you send the email yourself. <a href="../privacy/#ios-waitlist">Privacy Policy</a>
             </div>
         </div>
     </div>
@@ -1095,80 +1122,139 @@
     <script src="../assets/js/global-header.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const modal    = document.getElementById('ios-modal');
-            const btnOpen  = document.getElementById('btn-open-ios-modal');
-            const btnClose = document.getElementById('btn-close-modal');
-            const btnCopy  = document.getElementById('btn-copy-email');
+            const modal      = document.getElementById('ios-modal');
+            const btnWait    = document.getElementById('btn-ios-waitlist');
+            const btnClose   = document.getElementById('btn-close-modal');
+            const btnCopy    = document.getElementById('btn-copy-email');
+            const btnCopyMsg = document.getElementById('btn-copy-msg');
+            let lastTrigger  = null;
 
-            function openModal() {
+            const FULL_TEMPLATE =
+                'Subject: OSRTIME iOS Waitlist – Registration Request\r\n\r\n' +
+                'Hello OSRTIME Team,\r\n\r\n' +
+                'I would like to join the OSRTIME iOS Waitlist and receive an email notification when the iOS version becomes available.\r\n\r\n' +
+                'Please add my email address to the notification list.\r\n\r\n' +
+                'Best regards';
+
+            function openModal(trigger) {
+                if (!modal) return;
+                lastTrigger = trigger || document.activeElement;
                 modal.classList.add('open');
                 document.body.style.overflow = 'hidden';
                 if (btnClose) btnClose.focus();
             }
 
             function closeModal() {
+                if (!modal || !modal.classList.contains('open')) return;
                 modal.classList.remove('open');
                 document.body.style.overflow = '';
-                if (btnOpen) btnOpen.focus();
+                if (lastTrigger && typeof lastTrigger.focus === 'function') {
+                    lastTrigger.focus();
+                }
             }
 
-            const btnMailto = document.getElementById('btn-ios-mailto');
+            function setTemporaryLabel(btn, label) {
+                const orig = btn.getAttribute('data-orig-label') || btn.textContent.trim();
+                btn.setAttribute('data-orig-label', orig);
+                btn.textContent = label;
+                clearTimeout(btn._labelTimer);
+            btn._labelTimer = setTimeout(function () {
+                    btn.textContent = orig;
+                }, 2000);
+            }
 
-            if (btnMailto) {
-                btnMailto.addEventListener('auxclick', function (e) {
-                    if (e.button === 1) {
-                        e.preventDefault();
-                        openModal();
-                    }
-                });
-                btnMailto.addEventListener('click', function (e) {
-                    if (e.ctrlKey || e.metaKey || e.shiftKey) {
-                        e.preventDefault();
-                        window.location.href = btnMailto.href;
-                    }
-                    setTimeout(openModal, 120);
+            function selectFallbackNode(selectId) {
+                const el = selectId ? document.getElementById(selectId) : null;
+                if (!el || !window.getSelection) return;
+                try {
+                    const range = document.createRange();
+                    range.selectNodeContents(el);
+                    const sel = window.getSelection();
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                } catch (err) {}
+            }
+
+            function fallbackCopy(text, onSuccess, onFailure) {
+                let ok = false;
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.setAttribute('readonly', '');
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                try {
+                    ok = !!document.execCommand('copy');
+                } catch (err) {
+                    ok = false;
+                }
+                document.body.removeChild(ta);
+                if (ok) onSuccess();
+                else onFailure();
+            }
+
+            function copyWithFeedback(btn, text, fallbackSelectId) {
+                function onSuccess() {
+                    setTemporaryLabel(btn, 'Copied!');
+                }
+                function onFailure() {
+                    selectFallbackNode(fallbackSelectId);
+                    setTemporaryLabel(btn, 'Select text above');
+                }
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(onSuccess).catch(function () {
+                        fallbackCopy(text, onSuccess, onFailure);
+                    });
+                } else {
+                    fallbackCopy(text, onSuccess, onFailure);
+                }
+            }
+
+            if (btnWait) {
+                btnWait.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openModal(btnWait);
                 });
             }
-            if (btnOpen)  btnOpen.addEventListener('click', openModal);
             if (btnClose) btnClose.addEventListener('click', closeModal);
 
-            modal.addEventListener('click', function (e) {
-                if (e.target === modal) closeModal();
-            });
+            if (modal) {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === modal) closeModal();
+                });
+            }
 
             document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && modal.classList.contains('open')) {
+                if (!modal || !modal.classList.contains('open')) return;
+                if (e.key === 'Escape') {
+                    e.preventDefault();
                     closeModal();
+                    return;
+                }
+                if (e.key === 'Tab') {
+                    const focusable = modal.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])');
+                    if (!focusable.length) return;
+                    const first = focusable[0];
+                    const last = focusable[focusable.length - 1];
+                    if (e.shiftKey && document.activeElement === first) {
+                        e.preventDefault();
+                        last.focus();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        e.preventDefault();
+                        first.focus();
+                    }
                 }
             });
 
             if (btnCopy) {
                 btnCopy.addEventListener('click', function () {
-                    const addr = 'apple@osrtime.com';
-                    function showCopied() {
-                        const orig = btnCopy.textContent;
-                        btnCopy.textContent = 'Copied!';
-                        btnCopy.style.borderColor = 'var(--accent-cool)';
-                        btnCopy.style.color = 'var(--accent-cool)';
-                        setTimeout(function () {
-                            btnCopy.textContent = orig;
-                            btnCopy.style.borderColor = '';
-                            btnCopy.style.color = '';
-                        }, 2000);
-                    }
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText(addr).then(showCopied).catch(function () {
-                            const ta = document.createElement('textarea');
-                            ta.value = addr;
-                            ta.setAttribute('readonly', '');
-                            ta.style.position = 'fixed';
-                            ta.style.opacity = '0';
-                            document.body.appendChild(ta);
-                            ta.select();
-                            try { document.execCommand('copy'); showCopied(); } catch (e) {}
-                            document.body.removeChild(ta);
-                        });
-                    }
+                    copyWithFeedback(btnCopy, 'apple@osrtime.com', 'beta-modal-email-text');
+                });
+            }
+            if (btnCopyMsg) {
+                btnCopyMsg.addEventListener('click', function () {
+                    copyWithFeedback(btnCopyMsg, FULL_TEMPLATE, 'beta-modal-pre-text');
                 });
             }
         });
